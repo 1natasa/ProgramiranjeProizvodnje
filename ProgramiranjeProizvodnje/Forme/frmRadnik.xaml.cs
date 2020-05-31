@@ -17,19 +17,31 @@ using System.Windows.Shapes;
 namespace ProgramiranjeProizvodnje.Forme
 {
     /// <summary>
-    /// Interaction logic for frmTehnoloskiSistem.xaml
+    /// Interaction logic for frmRadnik.xaml
     /// </summary>
-    public partial class frmTehnoloskiSistem : Window
+    public partial class frmRadnik : Window
     {
         public SqlConnection konekcija = Konekcija.KreirajKonekciju();
-        public frmTehnoloskiSistem()
+        public frmRadnik()
         {
             InitializeComponent();
-            txtNazivTehnoloskogSistema.Focus();
+            txtImeRadnika.Focus();
 
             try
             {
                 konekcija.Open();
+                string vratiMesto = "select MestoID, NazivM as 'Grad' from tblMesto";
+                DataTable dtMesto = new DataTable();
+                SqlDataAdapter daMesto = new SqlDataAdapter(vratiMesto, konekcija);
+                daMesto.Fill(dtMesto);
+                cbxMesto.ItemsSource = dtMesto.DefaultView;
+
+                string vratiRadnoMesto = "select RadnoMestoID, NazivRM as 'Radno mesto' from tblRadnoMesto";
+                DataTable dtRadnoMesto = new DataTable();
+                SqlDataAdapter daRadnoMesto = new SqlDataAdapter(vratiRadnoMesto, konekcija);
+                daRadnoMesto.Fill(dtRadnoMesto);
+                cbxRadnoMesto.ItemsSource = dtRadnoMesto.DefaultView;
+
                 string vratiPogon = "select PogonID, OznakaP as 'Oznaka pogona' from tblPogon";
                 DataTable dtPogon = new DataTable();
                 SqlDataAdapter daPogon = new SqlDataAdapter(vratiPogon, konekcija);
@@ -55,20 +67,31 @@ namespace ProgramiranjeProizvodnje.Forme
                 if(MainWindow.azuriraj)
                 {
                     DataRowView red = (DataRowView)MainWindow.pomocni;
-                    string update = @"Update tblTehnoloskiSistem set OznakaTS='"+ txtOznakaTehnoloskogSistema.Text + "', NazivTS='" + txtNazivTehnoloskogSistema.Text + "', PogonID="+ cbxPogon.SelectedValue +" where TehnoloskiSistemID=" + red["TehnoloskiSistemID"];
+
+                    string update = @"Update tblRadnik set ImeR='" + txtImeRadnika.Text + "', PrezimeR= '" + txtPrezimeRadnika.Text + "', JMBG_R='" + txtJMBGRadnika.Text + "', TelefonR='" + txtTelefonRadnika.Text + "', AdresaR='" + txtAdresaRadnika.Text + "', MestoID=" + cbxMesto.SelectedValue + ", RadnoMestoID=" + cbxRadnoMesto.SelectedValue + ", PogonID=" + cbxPogon.SelectedValue + " where RadnikID=" + red["RadnikID"];
+
                     SqlCommand cmd = new SqlCommand(update, konekcija);
                     cmd.ExecuteNonQuery();
                     MainWindow.pomocni = null;
                     this.Close();
 
+                    
+
+
                 } else
                 {
-                    string insert = @"insert into tblTehnoloskiSistem(OznakaTS, NazivTS, PogonID) 
-                            values('" + txtOznakaTehnoloskogSistema.Text +"', '"+ txtNazivTehnoloskogSistema.Text +"', "+ cbxPogon.SelectedValue +")";
+                    string insert = @"insert into tblRadnik(ImeR, PrezimeR, JMBG_R, TelefonR, AdresaR, MestoID, RadnoMestoID, PogonID)" +
+                        "values('"+ txtImeRadnika.Text +"'," +
+                        " '"+ txtPrezimeRadnika.Text + "'," +
+                        " '"+ txtJMBGRadnika.Text +"', '"+ txtTelefonRadnika.Text + "'," +
+                        " '"+ txtAdresaRadnika.Text +"', "+ cbxMesto.SelectedValue +"," +
+                        " "+ cbxRadnoMesto.SelectedValue +", "+ cbxPogon.SelectedValue +" ); ";
+
                     SqlCommand cmd = new SqlCommand(insert, konekcija);
                     cmd.ExecuteNonQuery();
                     this.Close();
                 }
+
             }
             catch (SqlException)
             {

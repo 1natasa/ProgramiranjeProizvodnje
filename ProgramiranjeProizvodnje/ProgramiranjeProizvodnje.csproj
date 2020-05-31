@@ -63,6 +63,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Forme\frmRadnik.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forme\frmRadnoMesto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -84,6 +88,9 @@
     </Compile>
     <Compile Include="Forme\frmPogon.xaml.cs">
       <DependentUpon>frmPogon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\frmRadnik.xaml.cs">
+      <DependentUpon>frmRadnik.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forme\frmRadnoMesto.xaml.cs">
       <DependentUpon>frmRadnoMesto.xaml</DependentUpon>

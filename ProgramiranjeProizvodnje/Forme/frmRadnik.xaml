@@ -1,0 +1,33 @@
+﻿<Window x:Class="ProgramiranjeProizvodnje.Forme.frmRadnik"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProgramiranjeProizvodnje.Forme"
+        mc:Ignorable="d"
+        Title="Radnik" Height="450" Width="800">
+    <Grid>
+        <Label Content="Ime:" HorizontalAlignment="Left" Margin="97,59,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txtImeRadnika" HorizontalAlignment="Left" Height="23" Margin="157,63,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Prezime:" HorizontalAlignment="Left" Margin="97,106,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.286,0.792"/>
+        <TextBox Name="txtPrezimeRadnika" HorizontalAlignment="Left" Height="23" Margin="157,109,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
+        <Label Content="JMBG:" HorizontalAlignment="Left" Margin="97,152,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txtJMBGRadnika" HorizontalAlignment="Left" Height="23" Margin="157,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Telefon" HorizontalAlignment="Left" Margin="97,209,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.723,-0.32"/>
+        <TextBox Name="txtTelefonRadnika" HorizontalAlignment="Left" Height="23" Margin="157,209,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Adresa:" HorizontalAlignment="Left" Margin="97,267,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txtAdresaRadnika" HorizontalAlignment="Left" Height="23" Margin="157,271,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Mesto" HorizontalAlignment="Left" Margin="471,59,0,0" VerticalAlignment="Top" />
+        <ComboBox Name="cbxMesto" HorizontalAlignment="Left" Margin="583,59,0,0" VerticalAlignment="Top" Width="120" SelectedValuePath="MestoID" DisplayMemberPath="Grad"/>
+        <Label Content="Radno mesto" HorizontalAlignment="Left" Margin="469,106,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="cbxRadnoMesto" HorizontalAlignment="Left" Margin="583,109,0,0" VerticalAlignment="Top" Width="120" SelectedValuePath="RadnoMestoID" DisplayMemberPath="Radno mesto"/>
+        <Label Content="Pogon" HorizontalAlignment="Left" Margin="469,152,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.601,0.536"/>
+        <ComboBox Name="cbxPogon" HorizontalAlignment="Left" Margin="583,152,0,0" VerticalAlignment="Top" Width="120" SelectedValuePath="PogonID" DisplayMemberPath="Oznaka pogona"/>
+        <Button Name="btnSacuvaj" Content="Sacuvaj" HorizontalAlignment="Left" Margin="327,355,0,0" VerticalAlignment="Top" Width="75" Click="btnSacuvaj_Click" />
+        <Button Name="btnOtkazi" Content="Otkazi" HorizontalAlignment="Left" Margin="469,355,0,0" VerticalAlignment="Top" Width="75" Click="btnOtkazi_Click"/>
+
+
+
+
+    </Grid>
+</Window>

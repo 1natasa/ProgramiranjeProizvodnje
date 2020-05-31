@@ -495,17 +495,106 @@ namespace ProgramiranjeProizvodnje
 
         private void btnDodajRadnika_Click(object sender, RoutedEventArgs e)
         {
+            frmRadnik prozor = new frmRadnik();
+            prozor.ShowDialog();
+            string upit = "select ImeR as 'Ime', PrezimeR as 'Prezime', JMBG_R as 'JMBG', " +
+                "TelefonR as 'Telefon', AdresaR as 'Adresa', m.NazivM as 'Grad', rm.NazivRM as 'Radno Mesto', " +
+                "p.OznakaP as 'Pogon'" +
+                " from tblRadnik r" +
+                " inner join tblMesto m on r.MestoID=m.MestoID" +
+                " inner join tblRadnoMesto rm on r.RadnoMestoID=rm.RadnoMestoID" +
+                " inner join tblPogon p on r.PogonID=p.PogonID";
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(upit, konekcija);
+            DataTable dt = new DataTable("tblRadnik");
+            dataAdapter.Fill(dt);
+         
+            dataGridCentralni.ItemsSource = dt.DefaultView;
 
         }
 
         private void btnIzmeniRadnika_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                azuriraj = true;
+                frmRadnik prozor = new frmRadnik();
+                konekcija.Open();
+                DataRowView red = (DataRowView)dataGridCentralni.SelectedItems[0];
+
+                pomocni = red;
+
+                string upit = " select * from tblRadnik where RadnikID= " + red["RadnikID"];
+                SqlCommand komanda = new SqlCommand(upit, konekcija);
+                SqlDataReader citac = komanda.ExecuteReader();
+                while (citac.Read())
+                {
+                    prozor.txtImeRadnika.Text = citac["ImeR"].ToString();
+                    prozor.txtPrezimeRadnika.Text = citac["PrezimeR"].ToString();
+                    prozor.txtJMBGRadnika.Text = citac["JMBG_R"].ToString();
+                    prozor.txtTelefonRadnika.Text = citac["TelefonR"].ToString();
+                    prozor.txtAdresaRadnika.Text = citac["AdresaR"].ToString();
+                    prozor.cbxMesto.SelectedValue = citac["MestoID"].ToString();
+                    prozor.cbxRadnoMesto.SelectedValue = citac["RadnoMestoID"].ToString();
+                    prozor.cbxPogon.SelectedValue = citac["PogonID"].ToString();
+                    prozor.ShowDialog();
+
+                }
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+            }
+            finally
+            {
+
+                if (konekcija != null)
+                {
+                    konekcija.Close();
+                }
+
+                btnRadnik_Click(sender, e);
+                azuriraj = false;
+            }
+
+
 
         }
 
         private void btnObrisiRadnika_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                konekcija.Open();
+                DataRowView red = (DataRowView)dataGridCentralni.SelectedItems[0];
+                string upit = "Delete from tblRadnik where RadnikID=" + red["RadnikID"];
+                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da zelite da obrisite Kartu?", "Upozorenje", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
+                if (rezultat == MessageBoxResult.Yes)
+                {
+                    SqlCommand komanda = new SqlCommand(upit, konekcija);
+                    komanda.ExecuteNonQuery();
+                }
+
+
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+
+
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguce obrisati red.", "Obavestenje");
+            }
+            finally
+            {
+                if (konekcija != null)
+                {
+                    konekcija.Close();
+                }
+                btnRadnik_Click(sender, e);
+            }
         }
 
         private void btnDodajMesto_Click(object sender, RoutedEventArgs e)
