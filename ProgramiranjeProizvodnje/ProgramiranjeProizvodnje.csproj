@@ -59,7 +59,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Forme\frmPogon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forme\frmRadnoMesto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forme\frmTehnoloskiSistem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -74,8 +82,14 @@
     <Compile Include="Forme\frmMesto.xaml.cs">
       <DependentUpon>frmMesto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forme\frmPogon.xaml.cs">
+      <DependentUpon>frmPogon.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forme\frmRadnoMesto.xaml.cs">
       <DependentUpon>frmRadnoMesto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\frmTehnoloskiSistem.xaml.cs">
+      <DependentUpon>frmTehnoloskiSistem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Konekcija.cs" />
     <Compile Include="MainWindow.xaml.cs">

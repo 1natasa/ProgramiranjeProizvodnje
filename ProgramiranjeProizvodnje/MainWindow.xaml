@@ -36,9 +36,9 @@
             <Button Name="btnIzmeniMesto" Content="Izmeni mesto" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniMesto_Click"/>
             <Button Name="btnObrisiMesto" Content="Obrisi mesto" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiMesto_Click"/>
 
-            <Button Name="btnDodajPogon" Content="Dodaj radno mesto" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajPogon_Click"/>
-            <Button Name="btnIzmeniPogon" Content="Izmeni radno mesto" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniPogon_Click"/>
-            <Button Name="btnObrisiPogon" Content="Obrisi radno mesto" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiPogon_Click"/>
+            <Button Name="btnDodajPogon" Content="Dodaj pogon" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajPogon_Click"/>
+            <Button Name="btnIzmeniPogon" Content="Izmeni pogon" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniPogon_Click"/>
+            <Button Name="btnObrisiPogon" Content="Obrisi pogon" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiPogon_Click"/>
 
             <Button Name="btnDodajTehnoloskiSistem" Content="Dodaj tehnoloski sistem" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajTehnoloskiSistem_Click"/>
             <Button Name="btnIzmeniTehnoloskiSistem" Content="Izmeni tehnoloski sistem" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniTehnoloskiSistem_Click"/>

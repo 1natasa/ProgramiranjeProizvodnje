@@ -1,0 +1,21 @@
+﻿<Window x:Class="ProgramiranjeProizvodnje.Forme.frmTehnoloskiSistem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProgramiranjeProizvodnje.Forme"
+        mc:Ignorable="d"
+        Title="Tehnoloski Sistem" Height="450" Width="800">
+    <Grid>
+        <Label Content="Oznaka tehnoloskog sistema:" HorizontalAlignment="Left" Margin="130,80,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txtOznakaTehnoloskogSistema" HorizontalAlignment="Left" Height="23" Margin="361,83,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Naziv tehnoloskog sistema:" HorizontalAlignment="Left" Margin="130,150,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txtNazivTehnoloskogSistema" HorizontalAlignment="Left" Height="23" Margin="361,154,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Pogon:" HorizontalAlignment="Left" Margin="130,223,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="cbxPogon" HorizontalAlignment="Left" Margin="361,223,0,0" VerticalAlignment="Top" Width="120" SelectedValuePath="PogonID" DisplayMemberPath="Oznaka pogona"/>
+        <Button Name="btnSacuvaj" Content="Sacuvaj" HorizontalAlignment="Left" Margin="241,318,0,0" VerticalAlignment="Top" Width="75" Click="btnSacuvaj_Click"/>
+        <Button Name="btnOtkazi" Content="Otkazi" HorizontalAlignment="Left" Margin="361,318,0,0" VerticalAlignment="Top" Width="75" Click="btnOtkazi_Click"/>
+
+
+    </Grid>
+</Window>

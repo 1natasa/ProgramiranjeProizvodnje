@@ -119,17 +119,74 @@ namespace ProgramiranjeProizvodnje
 
                 }
             }
-
-
-
-
-
-
         }
 
         private void btnRadnik_Click(object sender, RoutedEventArgs e)
         {
+            btnDodajRadnoMesto.Visibility = Visibility.Collapsed;
+            btnIzmeniRadnoMesto.Visibility = Visibility.Collapsed;
+            btnObrisiRadnoMesto.Visibility = Visibility.Collapsed;
 
+            btnDodajRadnika.Visibility = Visibility.Visible;
+            btnIzmeniRadnika.Visibility = Visibility.Visible;
+            btnObrisiRadnika.Visibility = Visibility.Visible;
+
+            btnDodajMesto.Visibility = Visibility.Collapsed;
+            btnIzmeniMesto.Visibility = Visibility.Collapsed;
+            btnObrisiMesto.Visibility = Visibility.Collapsed;
+
+            btnDodajPogon.Visibility = Visibility.Collapsed;
+            btnIzmeniPogon.Visibility = Visibility.Collapsed;
+            btnObrisiPogon.Visibility = Visibility.Collapsed;
+
+            btnDodajTehnoloskiSistem.Visibility = Visibility.Collapsed;
+            btnIzmeniTehnoloskiSistem.Visibility = Visibility.Collapsed;
+            btnObrisiTehnoloskiSistem.Visibility = Visibility.Collapsed;
+
+            btnDodajProizvod.Visibility = Visibility.Collapsed;
+            btnIzmeniProizvod.Visibility = Visibility.Collapsed;
+            btnObrisiProizvod.Visibility = Visibility.Collapsed;
+
+            btnDodajDeo.Visibility = Visibility.Collapsed;
+            btnIzmeniDeo.Visibility = Visibility.Collapsed;
+            btnObrisiDeo.Visibility = Visibility.Collapsed;
+
+            btnDodajMaterijal.Visibility = Visibility.Collapsed;
+            btnIzmeniMaterijal.Visibility = Visibility.Collapsed;
+            btnObrisiMaterijal.Visibility = Visibility.Collapsed;
+
+            btnDodajSkaldiste.Visibility = Visibility.Collapsed;
+            btnIzmeniSkladiste.Visibility = Visibility.Collapsed;
+            btnObrisiSkladiste.Visibility = Visibility.Collapsed;
+
+
+            konekcija.Open();
+            try
+            {
+                string upit = "select RadnikID, ImeR as 'Ime', PrezimeR as 'Prezime', JMBG_R as 'JMBG', " +
+                    "TelefonR as 'Telefon', AdresaR as 'Adresa', m.NazivM as 'Grad', " +
+                    "rm.NazivRM as 'Radno mesto', p.OznakaP as 'Pogon' " +
+                    " from tblRadnik r " +
+                    "inner join tblRadnoMesto rm on r.RadnoMestoID = rm.RadnoMestoID " +
+                    "inner join tblMesto m on r.MestoID=m.MestoID " +
+                    "inner join tblPogon p on r.PogonID=p.PogonID";
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(upit, konekcija);
+                DataTable dt = new DataTable("tblRadnik");
+                dataAdapter.Fill(dt);
+                dataGridCentralni.ItemsSource = dt.DefaultView;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message.ToString());
+            }
+            finally
+            {
+                if (konekcija != null)
+                {
+                    konekcija.Close();
+
+                }
+            }
         }
 
         private void btnMesto_Click(object sender, RoutedEventArgs e)
@@ -198,11 +255,129 @@ namespace ProgramiranjeProizvodnje
         private void btnPogon_Click(object sender, RoutedEventArgs e)
         {
 
+            btnDodajRadnoMesto.Visibility = Visibility.Collapsed;
+            btnIzmeniRadnoMesto.Visibility = Visibility.Collapsed;
+            btnObrisiRadnoMesto.Visibility = Visibility.Collapsed;
+
+            btnDodajRadnika.Visibility = Visibility.Collapsed;
+            btnIzmeniRadnika.Visibility = Visibility.Collapsed;
+            btnObrisiRadnika.Visibility = Visibility.Collapsed;
+
+            btnDodajMesto.Visibility = Visibility.Collapsed;
+            btnIzmeniMesto.Visibility = Visibility.Collapsed;
+            btnObrisiMesto.Visibility = Visibility.Collapsed;
+
+            btnDodajPogon.Visibility = Visibility.Visible;
+            btnIzmeniPogon.Visibility = Visibility.Visible;
+            btnObrisiPogon.Visibility = Visibility.Visible;
+
+            btnDodajTehnoloskiSistem.Visibility = Visibility.Collapsed;
+            btnIzmeniTehnoloskiSistem.Visibility = Visibility.Collapsed;
+            btnObrisiTehnoloskiSistem.Visibility = Visibility.Collapsed;
+
+            btnDodajProizvod.Visibility = Visibility.Collapsed;
+            btnIzmeniProizvod.Visibility = Visibility.Collapsed;
+            btnObrisiProizvod.Visibility = Visibility.Collapsed;
+
+            btnDodajDeo.Visibility = Visibility.Collapsed;
+            btnIzmeniDeo.Visibility = Visibility.Collapsed;
+            btnObrisiDeo.Visibility = Visibility.Collapsed;
+
+            btnDodajMaterijal.Visibility = Visibility.Collapsed;
+            btnIzmeniMaterijal.Visibility = Visibility.Collapsed;
+            btnObrisiMaterijal.Visibility = Visibility.Collapsed;
+
+            btnDodajSkaldiste.Visibility = Visibility.Collapsed;
+            btnIzmeniSkladiste.Visibility = Visibility.Collapsed;
+            btnObrisiSkladiste.Visibility = Visibility.Collapsed;
+
+
+            konekcija.Open();
+            try
+            {
+                string upit = "select PogonID, OznakaP as 'Oznaka pogona' from tblPogon";
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(upit, konekcija);
+                DataTable dt = new DataTable("tblPogon");
+                dataAdapter.Fill(dt);
+                dataGridCentralni.ItemsSource = dt.DefaultView;
+
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message.ToString());
+            }
+            finally
+            {
+                if (konekcija != null)
+                {
+                    konekcija.Close();
+
+                }
+            }
         }
 
         private void btnTehnoloskiSistem_Click(object sender, RoutedEventArgs e)
         {
+            btnDodajRadnoMesto.Visibility = Visibility.Collapsed;
+            btnIzmeniRadnoMesto.Visibility = Visibility.Collapsed;
+            btnObrisiRadnoMesto.Visibility = Visibility.Collapsed;
 
+            btnDodajRadnika.Visibility = Visibility.Collapsed;
+            btnIzmeniRadnika.Visibility = Visibility.Collapsed;
+            btnObrisiRadnika.Visibility = Visibility.Collapsed;
+
+            btnDodajMesto.Visibility = Visibility.Collapsed;
+            btnIzmeniMesto.Visibility = Visibility.Collapsed;
+            btnObrisiMesto.Visibility = Visibility.Collapsed;
+
+            btnDodajPogon.Visibility = Visibility.Collapsed;
+            btnIzmeniPogon.Visibility = Visibility.Collapsed;
+            btnObrisiPogon.Visibility = Visibility.Collapsed;
+
+            btnDodajTehnoloskiSistem.Visibility = Visibility.Visible;
+            btnIzmeniTehnoloskiSistem.Visibility = Visibility.Visible;
+            btnObrisiTehnoloskiSistem.Visibility = Visibility.Visible;
+
+            btnDodajProizvod.Visibility = Visibility.Collapsed;
+            btnIzmeniProizvod.Visibility = Visibility.Collapsed;
+            btnObrisiProizvod.Visibility = Visibility.Collapsed;
+
+            btnDodajDeo.Visibility = Visibility.Collapsed;
+            btnIzmeniDeo.Visibility = Visibility.Collapsed;
+            btnObrisiDeo.Visibility = Visibility.Collapsed;
+
+            btnDodajMaterijal.Visibility = Visibility.Collapsed;
+            btnIzmeniMaterijal.Visibility = Visibility.Collapsed;
+            btnObrisiMaterijal.Visibility = Visibility.Collapsed;
+
+            btnDodajSkaldiste.Visibility = Visibility.Collapsed;
+            btnIzmeniSkladiste.Visibility = Visibility.Collapsed;
+            btnObrisiSkladiste.Visibility = Visibility.Collapsed;
+
+
+            konekcija.Open();
+            try
+            {
+                string upit = "select TehnoloskiSistemID, OznakaTS as 'Oznaka tehnoloskog sistema', NazivTS as 'Naziv tehnoloskog sistema', p.OznakaP as 'Oznaka pogona'" +
+                    "from tblTehnoloskiSistem ts inner join tblPogon p on ts.PogonID = p.PogonID";
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(upit, konekcija);
+                DataTable dt = new DataTable("tblTehnoloskiSistem");
+                dataAdapter.Fill(dt);
+                dataGridCentralni.ItemsSource = dt.DefaultView;
+
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message.ToString());
+            }
+            finally
+            {
+                if (konekcija != null)
+                {
+                    konekcija.Close();
+
+                }
+            }
         }
 
         private void btnPlanProizvodnje_Click(object sender, RoutedEventArgs e)
@@ -423,32 +598,177 @@ namespace ProgramiranjeProizvodnje
 
         private void btnDodajPogon_Click(object sender, RoutedEventArgs e)
         {
-
+            frmPogon prozor = new frmPogon();
+            prozor.ShowDialog();
+            string upit = "select PogonID, OznakaP as 'Oznaka pogona' from tblPogon";
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(upit, konekcija);
+            DataTable dt = new DataTable("tblPogon");
+            dataAdapter.Fill(dt);
+            dataGridCentralni.ItemsSource = dt.DefaultView;
         }
 
         private void btnIzmeniPogon_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                azuriraj = true;
+                frmPogon prozor = new frmPogon();
+                konekcija.Open();
+                DataRowView red = (DataRowView)dataGridCentralni.SelectedItems[0];
+                pomocni = red;
+                string upit = "select * from tblPogon where PogonID=" + red["PogonID"];
+                SqlCommand komanda = new SqlCommand(upit, konekcija);
+                SqlDataReader citac = komanda.ExecuteReader();
+                while(citac.Read())
+                {
+                    prozor.txtOznakaPogona.Text = citac["OznakaP"].ToString();
+                    prozor.ShowDialog();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+                
 
+            }
+            finally
+            {
+
+                if (konekcija != null)
+                {
+                    konekcija.Close();
+                }
+
+                btnPogon_Click(sender, e);
+                azuriraj = false;
+
+            }
         }
 
         private void btnObrisiPogon_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                konekcija.Open();
+                DataRowView red = (DataRowView)dataGridCentralni.SelectedItems[0];
+                string upit = "Delete from tblPogon where PogonID= " + red["PogonID"];
+                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da zelite da obrisite Pogon?", "Upozorenje", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
+                if (rezultat == MessageBoxResult.Yes)
+                {
+                    SqlCommand komanda = new SqlCommand(upit, konekcija);
+                    komanda.ExecuteNonQuery();
+                }
+
+
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+
+
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguce obrisati red.", "Obavestenje");
+            }
+            finally
+            {
+                if (konekcija != null)
+                {
+                    konekcija.Close();
+                }
+                btnPogon_Click(sender, e);
+            }
         }
 
         private void btnDodajTehnoloskiSistem_Click(object sender, RoutedEventArgs e)
         {
-
+            frmTehnoloskiSistem prozor = new frmTehnoloskiSistem();
+            prozor.ShowDialog();
+            string upit = "select TehnoloskiSistemID, OznakaTS, NazivTS, p.OznakaP as 'Oznaka pogona' from tblTehnoloskiSistem ts inner join tblPogon p on ts.PogonID=p.PogonID ";
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(upit, konekcija);
+            DataTable dt = new DataTable("tblTehnoloskiSistem");
+            dataAdapter.Fill(dt);
+            dataGridCentralni.ItemsSource = dt.DefaultView;
         }
 
         private void btnIzmeniTehnoloskiSistem_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                azuriraj = true;
+                frmTehnoloskiSistem prozor = new frmTehnoloskiSistem();
+                konekcija.Open();
+
+                DataRowView red = (DataRowView)dataGridCentralni.SelectedItems[0];
+
+                pomocni = red;
+                string upit = "select * from tblTehnoloskiSistem where TehnoloskiSistemID=" + red["TehnoloskiSistemID"];
+                SqlCommand komanda = new SqlCommand(upit, konekcija);
+                SqlDataReader citac = komanda.ExecuteReader();
+                while (citac.Read())
+                {
+                    prozor.txtOznakaTehnoloskogSistema.Text = citac["OznakaTS"].ToString();
+                    prozor.txtNazivTehnoloskogSistema.Text = citac["NazivTS"].ToString();
+                    prozor.cbxPogon.SelectedValue = citac["PogonID"].ToString();
+
+                    prozor.ShowDialog();
+
+                }
+
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+            }
+            finally
+            {
+
+                if (konekcija != null)
+                {
+                    konekcija.Close();
+                }
+                btnTehnoloskiSistem_Click(sender, e);
+                azuriraj = false;
+            }
+
 
         }
 
         private void btnObrisiTehnoloskiSistem_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                konekcija.Open();
+                DataRowView red = (DataRowView)dataGridCentralni.SelectedItems[0];
+                string upit = "Delete from tblTehnoloskiSistem where TehnoloskiSistemID= " + red["TehnoloskiSistemID"];
+                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da zelite da obrisite Relaciju?", "Upozorenje", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
+                if (rezultat == MessageBoxResult.Yes)
+                {
+                    SqlCommand komanda = new SqlCommand(upit, konekcija);
+                    komanda.ExecuteNonQuery();
+                }
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+
+
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguce obrisati red.", "Obavestenje");
+            }
+            finally
+            {
+                if (konekcija != null)
+                {
+                    konekcija.Close();
+                }
+                btnTehnoloskiSistem_Click(sender, e);
+            }
         }
 
         private void btnDodajPlanProizvodnje_Click(object sender, RoutedEventArgs e)
