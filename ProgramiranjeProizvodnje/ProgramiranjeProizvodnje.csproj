@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Forme\frmMaterijal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forme\frmMesto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -71,6 +75,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Forme\frmSkladiste.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forme\frmTehnoloskiSistem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -83,6 +91,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Forme\frmMaterijal.xaml.cs">
+      <DependentUpon>frmMaterijal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forme\frmMesto.xaml.cs">
       <DependentUpon>frmMesto.xaml</DependentUpon>
     </Compile>
@@ -94,6 +105,9 @@
     </Compile>
     <Compile Include="Forme\frmRadnoMesto.xaml.cs">
       <DependentUpon>frmRadnoMesto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\frmSkladiste.xaml.cs">
+      <DependentUpon>frmSkladiste.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forme\frmTehnoloskiSistem.xaml.cs">
       <DependentUpon>frmTehnoloskiSistem.xaml</DependentUpon>

@@ -8,14 +8,14 @@
         Title="Programiranje proizvodnje" Height="450" Width="800">
     <Grid>
         <DataGrid Name="dataGridCentralni" HorizontalAlignment="Center" VerticalAlignment="Center" Height="auto"
-                  Width="auto" AlternatingRowBackground="DarkOliveGreen" IsReadOnly="True"  SelectionUnit="FullRow" 
+                  Width="auto" AlternatingRowBackground="LightGray" IsReadOnly="True"  SelectionUnit="FullRow" 
                   SelectionMode="single" />
         <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Top" Height="30" Width="auto" Orientation="Horizontal">
             <Button Name="btnRadnoMesto" Content="Radno mesto" VerticalAlignment="Top" Height="30" Width="75" Click="btnRadnoMesto_Click"/>
             <Button Name="btnRadnik" Content="Radnik" VerticalAlignment="Top" Height="30" Width="75" Click="btnRadnik_Click" />
             <Button Name="btnMesto" Content="Mesto" VerticalAlignment="Top" Height="30" Width="75" Click="btnMesto_Click"/>
             <Button Name="btnPogon" Content="Pogon" VerticalAlignment="Top" Height="30" Width="75" Click="btnPogon_Click"/>
-            <Button Name="btnTehnoloskiSistem" Content="TehnoloskiSistem" VerticalAlignment="Top" Height="30" Width="75" Click="btnTehnoloskiSistem_Click"/>
+            <Button Name="btnTehnoloskiSistem" Content="Tehnoloski sistem" VerticalAlignment="Top" Height="30" Width="75" Click="btnTehnoloskiSistem_Click"/>
             <Button Name="btnPlanProizvodnje" Content="Plan proizvodnje" VerticalAlignment="Top" Height="30" Width="75" Click="btnPlanProizvodnje_Click" />
             <Button Name="btnProizvod" Content="Proizvod" VerticalAlignment="Top" Height="30" Width="75" Click="btnProizvod_Click"/>
             <Button Name="btnDeo" Content="Deo" VerticalAlignment="Top" Height="30" Width="75" Click="btnDeo_Click"/>
