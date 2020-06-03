@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Forme\frmDeo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forme\frmMaterijal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -63,7 +67,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Forme\frmPlanProizvodnje.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forme\frmPogon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forme\frmProizvod.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -91,14 +103,23 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Forme\frmDeo.xaml.cs">
+      <DependentUpon>frmDeo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forme\frmMaterijal.xaml.cs">
       <DependentUpon>frmMaterijal.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forme\frmMesto.xaml.cs">
       <DependentUpon>frmMesto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forme\frmPlanProizvodnje.xaml.cs">
+      <DependentUpon>frmPlanProizvodnje.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forme\frmPogon.xaml.cs">
       <DependentUpon>frmPogon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\frmProizvod.xaml.cs">
+      <DependentUpon>frmProizvod.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forme\frmRadnik.xaml.cs">
       <DependentUpon>frmRadnik.xaml</DependentUpon>
