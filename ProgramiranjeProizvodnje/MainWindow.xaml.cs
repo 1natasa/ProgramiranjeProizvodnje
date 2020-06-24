@@ -127,6 +127,7 @@ namespace ProgramiranjeProizvodnje
 
         private void btnRadnik_Click(object sender, RoutedEventArgs e)
         {
+
             btnDodajRadnoMesto.Visibility = Visibility.Collapsed;
             btnIzmeniRadnoMesto.Visibility = Visibility.Collapsed;
             btnObrisiRadnoMesto.Visibility = Visibility.Collapsed;
@@ -173,11 +174,11 @@ namespace ProgramiranjeProizvodnje
             {
                 string upit = "select RadnikID, ImeR as 'Ime', PrezimeR as 'Prezime', JMBG_R as 'JMBG', " +
                     "TelefonR as 'Telefon', AdresaR as 'Adresa', m.NazivM as 'Grad', " +
-                    "rm.NazivRM as 'Radno mesto', p.OznakaP as 'Pogon' " +
+                    "rm.NazivRM as 'Radno mesto', p.OznakaP as 'Pogon', Status " +
                     " from tblRadnik r " +
-                    "inner join tblRadnoMesto rm on r.RadnoMestoID = rm.RadnoMestoID " +
-                    "inner join tblMesto m on r.MestoID=m.MestoID " +
-                    "inner join tblPogon p on r.PogonID=p.PogonID";
+                    "left  join tblRadnoMesto rm on r.RadnoMestoID = rm.RadnoMestoID " +
+                    "left  join tblMesto m on r.MestoID=m.MestoID " +
+                    "left  join tblPogon p on r.PogonID=p.PogonID";
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(upit, konekcija);
                 DataTable dt = new DataTable("tblRadnik");
                 dataAdapter.Fill(dt);
@@ -827,13 +828,13 @@ namespace ProgramiranjeProizvodnje
         {
             frmRadnik prozor = new frmRadnik();
             prozor.ShowDialog();
-            string upit = "select ImeR as 'Ime', PrezimeR as 'Prezime', JMBG_R as 'JMBG', " +
+            string upit = "select RadnikID, ImeR as 'Ime', PrezimeR as 'Prezime', JMBG_R as 'JMBG', " +
                 "TelefonR as 'Telefon', AdresaR as 'Adresa', m.NazivM as 'Grad', rm.NazivRM as 'Radno Mesto', " +
-                "p.OznakaP as 'Pogon'" +
+                "p.OznakaP as 'Pogon', Status" +
                 " from tblRadnik r" +
-                " inner join tblMesto m on r.MestoID=m.MestoID" +
-                " inner join tblRadnoMesto rm on r.RadnoMestoID=rm.RadnoMestoID" +
-                " inner join tblPogon p on r.PogonID=p.PogonID";
+                " left join tblMesto m on r.MestoID=m.MestoID" +
+                " left join tblRadnoMesto rm on r.RadnoMestoID=rm.RadnoMestoID" +
+                " left join tblPogon p on r.PogonID=p.PogonID";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(upit, konekcija);
             DataTable dt = new DataTable("tblRadnik");
             dataAdapter.Fill(dt);
@@ -1633,6 +1634,11 @@ namespace ProgramiranjeProizvodnje
             }
         }
 
-
+        private void btnOdjaviSe_Click(object sender, RoutedEventArgs e)
+        {
+            frmPrijava prijava = new frmPrijava();
+            prijava.Show();
+            Close();
+        }
     }
 }

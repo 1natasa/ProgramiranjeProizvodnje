@@ -47,6 +47,9 @@ namespace ProgramiranjeProizvodnje.Forme
                 SqlDataAdapter daPogon = new SqlDataAdapter(vratiPogon, konekcija);
                 daPogon.Fill(dtPogon);
                 cbxPogon.ItemsSource = dtPogon.DefaultView;
+
+                
+
             }
             finally
             {
@@ -68,7 +71,7 @@ namespace ProgramiranjeProizvodnje.Forme
                 {
                     DataRowView red = (DataRowView)MainWindow.pomocni;
 
-                    string update = @"Update tblRadnik set ImeR='" + txtImeRadnika.Text + "', PrezimeR= '" + txtPrezimeRadnika.Text + "', JMBG_R='" + txtJMBGRadnika.Text + "', TelefonR='" + txtTelefonRadnika.Text + "', AdresaR='" + txtAdresaRadnika.Text + "', MestoID=" + cbxMesto.SelectedValue + ", RadnoMestoID=" + cbxRadnoMesto.SelectedValue + ", PogonID=" + cbxPogon.SelectedValue + " where RadnikID=" + red["RadnikID"];
+                    string update = @"Update tblRadnik set ImeR='" + txtImeRadnika.Text + "', PrezimeR= '" + txtPrezimeRadnika.Text + "', JMBG_R='" + txtJMBGRadnika.Text + "', TelefonR='" + txtTelefonRadnika.Text + "', AdresaR='" + txtAdresaRadnika.Text + "', MestoID=" + cbxMesto.SelectedValue + ", RadnoMestoID=" + cbxRadnoMesto.SelectedValue + ", PogonID=" + cbxPogon.SelectedValue + ", Status = '" + Convert.ToInt32(chkStatus.IsChecked) + "' where RadnikID=" + red["RadnikID"];
 
                     SqlCommand cmd = new SqlCommand(update, konekcija);
                     cmd.ExecuteNonQuery();
@@ -80,12 +83,14 @@ namespace ProgramiranjeProizvodnje.Forme
 
                 } else
                 {
-                    string insert = @"insert into tblRadnik(ImeR, PrezimeR, JMBG_R, TelefonR, AdresaR, MestoID, RadnoMestoID, PogonID)" +
+                    string insert = @"insert into tblRadnik(ImeR, PrezimeR, JMBG_R, TelefonR, AdresaR, MestoID, RadnoMestoID, PogonID, Status)" +
                         "values('"+ txtImeRadnika.Text +"'," +
                         " '"+ txtPrezimeRadnika.Text + "'," +
                         " '"+ txtJMBGRadnika.Text +"', '"+ txtTelefonRadnika.Text + "'," +
                         " '"+ txtAdresaRadnika.Text +"', "+ cbxMesto.SelectedValue +"," +
-                        " "+ cbxRadnoMesto.SelectedValue +", "+ cbxPogon.SelectedValue +" ); ";
+                        " "+ cbxRadnoMesto.SelectedValue +", "+ cbxPogon.SelectedValue +", 1 ); ";
+                    lblStatus.Visibility = Visibility.Collapsed;
+                    chkStatus.Visibility = Visibility.Collapsed;
 
                     SqlCommand cmd = new SqlCommand(insert, konekcija);
                     cmd.ExecuteNonQuery();

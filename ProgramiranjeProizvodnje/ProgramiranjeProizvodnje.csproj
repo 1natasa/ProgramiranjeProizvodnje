@@ -75,6 +75,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="frmPrijava.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forme\frmProizvod.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -84,6 +88,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Forme\frmRadnoMesto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmRegistracija.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -99,6 +107,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AesCryp.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -118,6 +127,9 @@
     <Compile Include="Forme\frmPogon.xaml.cs">
       <DependentUpon>frmPogon.xaml</DependentUpon>
     </Compile>
+    <Compile Include="frmPrijava.xaml.cs">
+      <DependentUpon>frmPrijava.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forme\frmProizvod.xaml.cs">
       <DependentUpon>frmProizvod.xaml</DependentUpon>
     </Compile>
@@ -126,6 +138,9 @@
     </Compile>
     <Compile Include="Forme\frmRadnoMesto.xaml.cs">
       <DependentUpon>frmRadnoMesto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegistracija.xaml.cs">
+      <DependentUpon>frmRegistracija.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forme\frmSkladiste.xaml.cs">
       <DependentUpon>frmSkladiste.xaml</DependentUpon>

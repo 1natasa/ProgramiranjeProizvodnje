@@ -5,67 +5,72 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProgramiranjeProizvodnje"
         mc:Ignorable="d"
-        Title="Programiranje proizvodnje" Height="450" Width="800">
+        Title="Programiranje proizvodnje" Height="650" Width="1150">
     <Grid>
-        <DataGrid Name="dataGridCentralni" HorizontalAlignment="Center" VerticalAlignment="Center" Height="auto"
+        <DataGrid Name="dataGridCentralni" HorizontalAlignment="Center" VerticalAlignment="Center" Height="450"
                   Width="auto" AlternatingRowBackground="LightGray" IsReadOnly="True"  SelectionUnit="FullRow" 
                   SelectionMode="single" />
         <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Top" Height="30" Width="auto" Orientation="Horizontal">
-            <Button Name="btnRadnoMesto" Content="Radno mesto" VerticalAlignment="Top" Height="30" Width="75" Click="btnRadnoMesto_Click"/>
+            <Button Name="btnRadnoMesto" Content="Radno mesto" VerticalAlignment="Top" Height="30" Width="95" Click="btnRadnoMesto_Click"/>
             <Button Name="btnRadnik" Content="Radnik" VerticalAlignment="Top" Height="30" Width="75" Click="btnRadnik_Click" />
             <Button Name="btnMesto" Content="Mesto" VerticalAlignment="Top" Height="30" Width="75" Click="btnMesto_Click"/>
             <Button Name="btnPogon" Content="Pogon" VerticalAlignment="Top" Height="30" Width="75" Click="btnPogon_Click"/>
-            <Button Name="btnTehnoloskiSistem" Content="Tehnoloski sistem" VerticalAlignment="Top" Height="30" Width="75" Click="btnTehnoloskiSistem_Click"/>
-            <Button Name="btnPlanProizvodnje" Content="Plan proizvodnje" VerticalAlignment="Top" Height="30" Width="75" Click="btnPlanProizvodnje_Click" />
+            <Button Name="btnTehnoloskiSistem" Content="Tehnoloski sistem" VerticalAlignment="Top" Height="30" Width="125" Click="btnTehnoloskiSistem_Click"/>
+            <Button Name="btnPlanProizvodnje" Content="Plan proizvodnje" VerticalAlignment="Top" Height="30" Width="125" Click="btnPlanProizvodnje_Click" />
             <Button Name="btnProizvod" Content="Proizvod" VerticalAlignment="Top" Height="30" Width="75" Click="btnProizvod_Click"/>
             <Button Name="btnDeo" Content="Deo" VerticalAlignment="Top" Height="30" Width="75" Click="btnDeo_Click"/>
             <Button Name="btnMaterijal" Content="Materijal" VerticalAlignment="Top" Height="30" Width="75" Click="btnMaterijal_Click" />
             <Button Name="btnSkladiste" Content="Skladiste" VerticalAlignment="Top" Height="30" Width="75" Click="btnSkladiste_Click" />
         </StackPanel>
-
+        <TextBlock  HorizontalAlignment="Right" Width="155" Margin="0,10,-63,565"><Hyperlink Name="btnOdjaviSe" FontSize="14" FontStyle="Normal" BaselineAlignment="Top" Click="btnOdjaviSe_Click"><Run Text="Odjavite se"/></Hyperlink></TextBlock>
+        <TextBlock Height="20" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name ="rola" VerticalAlignment="Top" Width="117"  OpacityMask="Crimson" Foreground="Black" FontWeight="Bold"/>
+        <TextBlock Height="20" HorizontalAlignment="Left" Margin="136,51,0,0" x:Name ="poruka" VerticalAlignment="Top" Width="841"  OpacityMask="Crimson" Foreground="Black" FontWeight="Bold"/>
         <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="30" Width="352" Orientation="Horizontal">
-            <Button Name="btnDodajRadnoMesto" Content="Dodaj radno mesto" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajRadnoMesto_Click"/>
-            <Button Name="btnIzmeniRadnoMesto" Content="Izmeni radno mesto" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniRadnoMesto_Click"/>
-            <Button Name="btnObrisiRadnoMesto" Content="Obrisi radno mesto" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiRadnoMesto_Click"/>
 
-            <Button Name="btnDodajRadnika" Content="Dodaj radnika" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajRadnika_Click"/>
-            <Button Name="btnIzmeniRadnika" Content="Izmeni radnika" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniRadnika_Click"/>
-            <Button Name="btnObrisiRadnika" Content="Obrisi radnika" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiRadnika_Click"/>
+            <Button x:Name="btnDodajRadnika" Content="Dodaj radnika" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajRadnika_Click"/>
+            <Button x:Name="btnIzmeniRadnika" Content="Izmeni radnika" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniRadnika_Click"/>
+            <Button x:Name="btnObrisiRadnika" Content="Obrisi radnika" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiRadnika_Click"/>
+            <Button x:Name="btnDodajRadnoMesto" Content="Dodaj radno mesto" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajRadnoMesto_Click"/>
+            <Button x:Name="btnIzmeniRadnoMesto" Content="Izmeni radno mesto" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniRadnoMesto_Click"/>
+            <Button x:Name="btnObrisiRadnoMesto" Content="Obrisi radno mesto" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiRadnoMesto_Click" RenderTransformOrigin="-2.979,0.197"/>
+            
 
-            <Button Name="btnDodajMesto" Content="Dodaj mesto" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajMesto_Click"/>
-            <Button Name="btnIzmeniMesto" Content="Izmeni mesto" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniMesto_Click"/>
-            <Button Name="btnObrisiMesto" Content="Obrisi mesto" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiMesto_Click"/>
+            <Button x:Name="btnDodajMesto" Content="Dodaj mesto" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajMesto_Click"/>
+            <Button x:Name="btnIzmeniMesto" Content="Izmeni mesto" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniMesto_Click"/>
+            <Button x:Name="btnObrisiMesto" Content="Obrisi mesto" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiMesto_Click"/>
 
-            <Button Name="btnDodajPogon" Content="Dodaj pogon" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajPogon_Click"/>
-            <Button Name="btnIzmeniPogon" Content="Izmeni pogon" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniPogon_Click"/>
-            <Button Name="btnObrisiPogon" Content="Obrisi pogon" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiPogon_Click"/>
+            <Button x:Name="btnDodajPogon" Content="Dodaj pogon" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajPogon_Click"/>
+            <Button x:Name="btnIzmeniPogon" Content="Izmeni pogon" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniPogon_Click"/>
+            <Button x:Name="btnObrisiPogon" Content="Obrisi pogon" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiPogon_Click"/>
 
-            <Button Name="btnDodajTehnoloskiSistem" Content="Dodaj tehnoloski sistem" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajTehnoloskiSistem_Click"/>
-            <Button Name="btnIzmeniTehnoloskiSistem" Content="Izmeni tehnoloski sistem" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniTehnoloskiSistem_Click"/>
-            <Button Name="btnObrisiTehnoloskiSistem" Content="Obrisi tehnoloski sistem" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiTehnoloskiSistem_Click"/>
+            <Button x:Name="btnDodajTehnoloskiSistem" Content="Dodaj tehnoloski s." VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajTehnoloskiSistem_Click"/>
+            <Button x:Name="btnIzmeniTehnoloskiSistem" Content="Izmeni tehnoloski s." VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniTehnoloskiSistem_Click"/>
+            <Button x:Name="btnObrisiTehnoloskiSistem" Content="Obrisi tehnoloski s." VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiTehnoloskiSistem_Click"/>
 
-            <Button Name="btnDodajPlanProizvodnje" Content="Dodaj plan proizvodnje" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajPlanProizvodnje_Click"/>
-            <Button Name="btnIzmeniPlanProizvodnje" Content="Izmeni plan proizvodnje" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniPlanProizvodnje_Click"/>
-            <Button Name="btnObrisiPlanProizvodnje" Content="Obrisi plan proizvodnje" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiPlanProizvodnje_Click"/>
+            <Button x:Name="btnDodajPlanProizvodnje" Content="Dodaj plan" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajPlanProizvodnje_Click"/>
+            <Button x:Name="btnIzmeniPlanProizvodnje" Content="Izmeni plan" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniPlanProizvodnje_Click"/>
+            <Button x:Name="btnObrisiPlanProizvodnje" Content="Obrisi plan" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiPlanProizvodnje_Click"/>
 
-            <Button Name="btnDodajProizvod" Content="Dodaj proizvod" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajProizvod_Click"/>
-            <Button Name="btnIzmeniProizvod" Content="Izmeni proizvod" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniProizvod_Click"/>
-            <Button Name="btnObrisiProizvod" Content="Obrisi proizvod" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiProizvod_Click"/>
+            <Button x:Name="btnDodajProizvod" Content="Dodaj proizvod" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajProizvod_Click"/>
+            <Button x:Name="btnIzmeniProizvod" Content="Izmeni proizvod" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniProizvod_Click"/>
+            <Button x:Name="btnObrisiProizvod" Content="Obrisi proizvod" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiProizvod_Click"/>
 
-            <Button Name="btnDodajDeo" Content="Dodaj deo" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajDeo_Click"/>
-            <Button Name="btnIzmeniDeo" Content="Izmeni deo" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniDeo_Click"/>
-            <Button Name="btnObrisiDeo" Content="Obrisi deo" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiDeo_Click"/>
+            <Button x:Name="btnDodajDeo" Content="Dodaj deo" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajDeo_Click"/>
+            <Button x:Name="btnIzmeniDeo" Content="Izmeni deo" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniDeo_Click"/>
+            <Button x:Name="btnObrisiDeo" Content="Obrisi deo" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiDeo_Click"/>
 
-            <Button Name="btnDodajMaterijal" Content="Dodaj materijal" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajMaterijal_Click"/>
-            <Button Name="btnIzmeniMaterijal" Content="Izmeni materijal" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniMaterijal_Click"/>
-            <Button Name="btnObrisiMaterijal" Content="Obrisi materijal" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiMaterijal_Click"/>
+            <Button x:Name="btnDodajMaterijal" Content="Dodaj materijal" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajMaterijal_Click"/>
+            <Button x:Name="btnIzmeniMaterijal" Content="Izmeni materijal" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniMaterijal_Click"/>
+            <Button x:Name="btnObrisiMaterijal" Content="Obrisi materijal" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiMaterijal_Click"/>
 
-            <Button Name="btnDodajSkaldiste" Content="Dodaj skladiste" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajSkaldiste_Click"/>
-            <Button Name="btnIzmeniSkladiste" Content="Izmeni skladiste" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniSkladiste_Click"/>
-            <Button Name="btnObrisiSkladiste" Content="Obrisi skladiste" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiSkladiste_Click"/>
+            <Button x:Name="btnDodajSkaldiste" Content="Dodaj skladiste" VerticalAlignment="Top" Width="117" Height="30" Click="btnDodajSkaldiste_Click"/>
+            <Button x:Name="btnIzmeniSkladiste" Content="Izmeni skladiste" VerticalAlignment="Top" Width="117" Height="30" Click="btnIzmeniSkladiste_Click"/>
+            <Button x:Name="btnObrisiSkladiste" Content="Obrisi skladiste" VerticalAlignment="Top" Width="117" Height="30" Click="btnObrisiSkladiste_Click"/>
+
 
 
         </StackPanel>
+
 
     </Grid>
 </Window>

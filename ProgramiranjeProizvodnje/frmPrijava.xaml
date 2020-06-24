@@ -1,0 +1,25 @@
+﻿<Window x:Class="ProgramiranjeProizvodnje.frmPrijava"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProgramiranjeProizvodnje"
+        mc:Ignorable="d"
+        Title="Prijava" Height="450" Width="800">
+    <Grid>
+        <Label Name="lblKorisnickoIme" Content="Korisnicko ime:" HorizontalAlignment="Left" Margin="217,152,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.232,1.725"/>
+        <TextBox Name="txtKorisnickoIme" HorizontalAlignment="Left" Height="23" Margin="374,155,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Name="lblLozinka" Content="Lozinka:" HorizontalAlignment="Left" Margin="217,213,0,0" VerticalAlignment="Top"/>
+        <PasswordBox Name="txtPassword" HorizontalAlignment="Left" Margin="374,213,0,0" VerticalAlignment="Top" Width="120" Height="23"/>
+        <Button Name="btnPotvrdi" Content="Potvrdi" HorizontalAlignment="Left" Margin="343,315,0,0" VerticalAlignment="Top" Width="75" Click="btnPotvrdi_Click"/>
+        <TextBlock Name="textBlockHeading" VerticalAlignment="Top" FontSize="10" FontStyle="Italic" Padding="5">  
+            Nemate nalog? Registrujte se 
+            <TextBlock>  
+                 <Hyperlink Name="btnRegistracija" Click="btnRegistracija_Click" FontSize="10" FontStyle="Normal">ovde</Hyperlink>  
+            </TextBlock>    
+            .
+        </TextBlock>
+        <Label Content="Prijava u aplikaciju" FontSize="20" FontWeight="DemiBold" HorizontalAlignment="Left" Margin="321,43,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
