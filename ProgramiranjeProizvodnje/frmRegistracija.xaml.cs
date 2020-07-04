@@ -45,7 +45,51 @@ namespace ProgramiranjeProizvodnje
 
         private void btnPotvrdi_Click(object sender, RoutedEventArgs e)
         {
-            if (txtEmail.Text.Length == 0)
+            if (txtIme.Text.Length == 0)
+            {
+                MessageBox.Show("Unesite ime.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                txtIme.Focus();
+            } else if (!Regex.IsMatch(txtIme.Text, @"^[a-zA-Z]+$"))
+            {
+                MessageBox.Show("Ime moze da ima smao karaktere.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                txtIme.Focus();
+            }
+            else if (txtPrezime.Text.Length == 0)
+            {
+                MessageBox.Show("Unesite prezime.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                txtPrezime.Focus();
+            }
+            else if (!Regex.IsMatch(txtPrezime.Text, @"^[a-zA-Z]+$"))
+            {
+                MessageBox.Show("Prezime moze da ima smao karaktere.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                txtPrezime.Focus();
+            } else if (txtJMBG.Text.Length != 13)
+            {
+                MessageBox.Show("Unesite ispravan JMBG. JMBG mora da ima 13 cifara", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                txtJMBG.Focus();
+
+            } else if(!Regex.IsMatch(txtJMBG.Text, @"^[0-9]+$"))
+            {
+                MessageBox.Show("JMBG moze da sadrzi samo brojeve.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                txtJMBG.Focus();
+            }
+            else if (txtTelefon.Text.Length == 0)
+            {
+                MessageBox.Show("Unesite telefon.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                txtTelefon.Focus();
+            }
+            else if (!Regex.IsMatch(txtTelefon.Text, @"^[0-9]+$"))
+            {
+                MessageBox.Show("Telefon moze da sadrzi samo brojeve.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                txtTelefon.Focus();
+            }
+            else if (txtAdresa.Text.Length == 0)
+            {
+                MessageBox.Show("Unesite Adresu.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                txtAdresa.Focus();
+            }
+
+            else if (txtEmail.Text.Length == 0)
             {
                 MessageBox.Show("Unesite e-adresu.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
                 txtEmail.Focus();
@@ -61,11 +105,7 @@ namespace ProgramiranjeProizvodnje
                 MessageBox.Show("Unesite korisničko ime.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
                 txtUsername.Focus(); 
             }
-            else if (txtTelefon.Text.Length == 0)
-            {
-                MessageBox.Show("Unesite telefon.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
-                txtTelefon.Focus();
-            }
+            
             else
             {
                 if (txtPassword.Password.Length == 0)

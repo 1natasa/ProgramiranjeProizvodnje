@@ -8,8 +8,8 @@
         Title="Programiranje proizvodnje" Height="650" Width="1150">
     <Grid>
         <DataGrid Name="dataGridCentralni" HorizontalAlignment="Center" VerticalAlignment="Center" Height="450"
-                  Width="auto" AlternatingRowBackground="LightGray" IsReadOnly="True"  SelectionUnit="FullRow" 
-                  SelectionMode="single" />
+                  Width="650" AlternatingRowBackground="LightGray" IsReadOnly="True"  SelectionUnit="FullRow" 
+                  SelectionMode="single" ColumnWidth="115" GridLinesVisibility="Vertical" AutoGenerateColumns="True"/>
         <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Top" Height="30" Width="auto" Orientation="Horizontal">
             <Button Name="btnRadnoMesto" Content="Radno mesto" VerticalAlignment="Top" Height="30" Width="95" Click="btnRadnoMesto_Click"/>
             <Button Name="btnRadnik" Content="Radnik" VerticalAlignment="Top" Height="30" Width="75" Click="btnRadnik_Click" />
@@ -22,8 +22,8 @@
             <Button Name="btnMaterijal" Content="Materijal" VerticalAlignment="Top" Height="30" Width="75" Click="btnMaterijal_Click" />
             <Button Name="btnSkladiste" Content="Skladiste" VerticalAlignment="Top" Height="30" Width="75" Click="btnSkladiste_Click" />
         </StackPanel>
-        <TextBlock  HorizontalAlignment="Right" Width="155" Margin="0,10,-63,565"><Hyperlink Name="btnOdjaviSe" FontSize="14" FontStyle="Normal" BaselineAlignment="Top" Click="btnOdjaviSe_Click"><Run Text="Odjavite se"/></Hyperlink></TextBlock>
-        <TextBlock Height="20" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name ="rola" VerticalAlignment="Top" Width="117"  OpacityMask="Crimson" Foreground="Black" FontWeight="Bold"/>
+        <TextBlock  HorizontalAlignment="Right" Width="155" Margin="0,10,-63,565"><Hyperlink Name="btnOdjaviSe" FontSize="14" FontStyle="Italic" Foreground="White" BaselineAlignment="Top" Click="btnOdjaviSe_Click"><Run Text="Odjavite se"/></Hyperlink></TextBlock>
+        <TextBlock Height="20" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name ="rola" VerticalAlignment="Top" Width="117"  OpacityMask="Crimson" Foreground="White" FontWeight="Bold"/>
         <TextBlock Height="20" HorizontalAlignment="Left" Margin="136,51,0,0" x:Name ="poruka" VerticalAlignment="Top" Width="841"  OpacityMask="Crimson" Foreground="Black" FontWeight="Bold"/>
         <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="30" Width="352" Orientation="Horizontal">
 
@@ -73,4 +73,9 @@
 
 
     </Grid>
+
+    <Window.Background>
+        <ImageBrush ImageSource="Resources\glavniPr.jpg"  Opacity="0.6"/>
+
+    </Window.Background>
 </Window>

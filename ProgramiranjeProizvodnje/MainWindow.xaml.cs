@@ -1550,7 +1550,7 @@ namespace ProgramiranjeProizvodnje
             frmSkladiste prozor = new frmSkladiste();
             prozor.ShowDialog();
 
-            string upit = "select SkladisteID, OznakaS, LokacijaS, m.NazivM, m.PostanskiBroj from tblSkladiste s inner join tblMesto m on s.MestoID=m.MestoID";
+            string upit = "select SkladisteID, OznakaS as 'Oznaka', LokacijaS as 'Lokacija', m.NazivM as 'Grad', m.PostanskiBroj as 'Postanski broj' from tblSkladiste s inner join tblMesto m on s.MestoID=m.MestoID";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(upit, konekcija);
             DataTable dt = new DataTable("tblSkladiste");
             dataAdapter.Fill(dt);
