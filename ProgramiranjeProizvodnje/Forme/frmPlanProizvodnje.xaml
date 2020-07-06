@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProgramiranjeProizvodnje.Forme"
         mc:Ignorable="d"
-        Title="PlanProizvodnje" Height="450" Width="800">
+        Title="Plan proizvodnje" Height="450" Width="800" Icon="../Resources/process.png">
     <Grid>
         <Label Content="Datum:" HorizontalAlignment="Left" Margin="138,75,0,0" VerticalAlignment="Top"/>
         <DatePicker Name="dpDatum" HorizontalAlignment="Left" Margin="249,77,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Kolicina:" HorizontalAlignment="Left" Margin="138,148,0,0" VerticalAlignment="Top"/>
+        <Label Content="Količina:" HorizontalAlignment="Left" Margin="138,148,0,0" VerticalAlignment="Top"/>
         <TextBox Name="txtKolicina" HorizontalAlignment="Left" Height="23" Margin="249,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Napomena" HorizontalAlignment="Left" Margin="138,212,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.266,0.776"/>
+        <Label Content="Napomena:" HorizontalAlignment="Left" Margin="138,212,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.266,0.776"/>
         <TextBox Name="txtNapomena" HorizontalAlignment="Left" Height="23" Margin="249,215,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Radnik" HorizontalAlignment="Left" Margin="138,274,0,0" VerticalAlignment="Top"/>
+        <Label Content="Radnik:" HorizontalAlignment="Left" Margin="138,274,0,0" VerticalAlignment="Top"/>
         <ComboBox Name="cbxRadnik" HorizontalAlignment="Left" Margin="249,277,0,0" VerticalAlignment="Top" Width="120" SelectedValuePath="RadnikID" DisplayMemberPath="Radnik"/>
-        <Button Name="btnSacuvaj" Content="Sacuvaj" HorizontalAlignment="Left" Margin="249,361,0,0" VerticalAlignment="Top" Width="75" Click="btnSacuvaj_Click"/>
-        <Button Name="btnOtkazi" Content="Otkazi" HorizontalAlignment="Left" Margin="410,361,0,0" VerticalAlignment="Top" Width="75" Click="btnOtkazi_Click"/>
+        <Button Name="btnSacuvaj" Content="Sačuvaj" HorizontalAlignment="Left" Margin="249,361,0,0" VerticalAlignment="Top" Width="75" Click="btnSacuvaj_Click"/>
+        <Button Name="btnOtkazi" Content="Otkaži" HorizontalAlignment="Left" Margin="410,361,0,0" VerticalAlignment="Top" Width="75" Click="btnOtkazi_Click"/>
         <Label Content="Oznaka" HorizontalAlignment="Left" Margin="138,23,0,0" VerticalAlignment="Top"/>
         <TextBox Name="txtOznaka"  HorizontalAlignment="Left" Height="23" Margin="249,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
 

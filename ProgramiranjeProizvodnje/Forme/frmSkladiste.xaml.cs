@@ -56,25 +56,54 @@ namespace ProgramiranjeProizvodnje.Forme
                 konekcija.Open();
                 if(MainWindow.azuriraj)
                 {
-                    DataRowView red = (DataRowView)MainWindow.pomocni;
+                    if (txtOznakaS.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite oznaku skladišta.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtOznakaS.Focus();
 
-                    string update =@"Update tblSkladiste set OznakaS= '"+ txtOznakaS.Text +"', LokacijaS='"+ txtLokacijaS.Text +"', MestoID=" + cbxMesto.SelectedValue +" where SkladisteID=" + red["SkladisteID"];
-                    SqlCommand cmd = new SqlCommand(update, konekcija);
-                    cmd.ExecuteNonQuery();
-                    MainWindow.pomocni = null;
-                    this.Close();
+                    } else if(txtLokacijaS.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite lokaciju skladišta.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtLokacijaS.Focus();
+                    } 
+                    else
+                    {
+                        DataRowView red = (DataRowView)MainWindow.pomocni;
+
+                        string update = @"Update tblSkladiste set OznakaS= '" + txtOznakaS.Text + "', LokacijaS='" + txtLokacijaS.Text + "', MestoID=" + cbxMesto.SelectedValue + " where SkladisteID=" + red["SkladisteID"];
+                        SqlCommand cmd = new SqlCommand(update, konekcija);
+                        cmd.ExecuteNonQuery();
+                        MainWindow.pomocni = null;
+                        this.Close();
+
+                    }
+                    
 
                 } else
                 {
-                    string insert = @"insert into tblSkladiste(OznakaS, LokacijaS, MestoID) values('"+txtOznakaS.Text + "', '"+ txtLokacijaS.Text +"', "+cbxMesto.SelectedValue +");";
-                    SqlCommand cmd = new SqlCommand(insert, konekcija);
-                    cmd.ExecuteNonQuery();
-                    this.Close();
+                    if (txtOznakaS.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite oznaku skladišta.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtOznakaS.Focus();
+
+                    }
+                    else if (txtLokacijaS.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite lokaciju skladišta.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtLokacijaS.Focus();
+                    }
+                    else
+                    {
+                        string insert = @"insert into tblSkladiste(OznakaS, LokacijaS, MestoID) values('" + txtOznakaS.Text + "', '" + txtLokacijaS.Text + "', " + cbxMesto.SelectedValue + ");";
+                        SqlCommand cmd = new SqlCommand(insert, konekcija);
+                        cmd.ExecuteNonQuery();
+                        this.Close();
+                    }
                 }
             }
             catch (SqlException)
             {
-                MessageBox.Show("Unos odredjenih podataka nije validan", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Unos određenih podataka nije validan!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {

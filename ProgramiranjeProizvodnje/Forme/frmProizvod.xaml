@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProgramiranjeProizvodnje.Forme"
         mc:Ignorable="d"
-        Title="Proizvod" Height="450" Width="800">
+        Title="Proizvod" Height="450" Width="800" Icon="../Resources/process.png">
     <Grid>
         <Label Content="Naziv:" HorizontalAlignment="Left" Margin="102,40,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.943,5.779"/>
         
@@ -19,8 +19,8 @@
         
         <Label Content="Oznaka plana proizvodnje:" HorizontalAlignment="Left" Margin="105,282,0,0" VerticalAlignment="Top"/>
         <ComboBox Name="cbxPlanProizvodnje" HorizontalAlignment="Left" Margin="300,285,0,0" VerticalAlignment="Top" Width="120" SelectedValuePath="PlanProizvodnjeID" DisplayMemberPath="Plan proizvodnje"/>
-        <Button Name="btnSacuvaj" Content="Sacuvaj" HorizontalAlignment="Left" Margin="300,353,0,0" VerticalAlignment="Top" Width="75" Click="btnSacuvaj_Click"/>
-        <Button Name="btnOtkazi" Content="Otkazi" HorizontalAlignment="Left" Margin="443,353,0,0" VerticalAlignment="Top" Width="75" Click="btnOtkazi_Click"/>
+        <Button Name="btnSacuvaj" Content="Sačuvaj" HorizontalAlignment="Left" Margin="300,353,0,0" VerticalAlignment="Top" Width="75" Click="btnSacuvaj_Click"/>
+        <Button Name="btnOtkazi" Content="Otkaži" HorizontalAlignment="Left" Margin="443,353,0,0" VerticalAlignment="Top" Width="75" Click="btnOtkazi_Click"/>
 
     </Grid>
 </Window>

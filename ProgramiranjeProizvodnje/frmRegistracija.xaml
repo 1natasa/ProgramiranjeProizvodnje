@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProgramiranjeProizvodnje"
         mc:Ignorable="d"
-        Title="Registracija" Height="750" Width="800">
+        Title="Registracija" Icon="Resources/process.png" Height="750" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100*"/>
@@ -22,7 +22,7 @@
         <TextBox Name="txtTelefon" HorizontalAlignment="Left" Height="25" Margin="243.6,267,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="159" Grid.Column="1"/>
         <Label Name="lblAdresa"  Content="Adresa:" HorizontalAlignment="Left" Margin="96.6,326,0,0" VerticalAlignment="Top" Height="28" Width="66" Grid.Column="1" Foreground="White" FontWeight="ExtraBold"/>
         <TextBox Name="txtAdresa" HorizontalAlignment="Left" Height="24" Margin="243.6,330,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="159" Grid.Column="1"/>
-        <Label Name="lblEmail" Content="Email" HorizontalAlignment="Left" Margin="96.6,383,0,0" VerticalAlignment="Top" Height="27" Width="51" Grid.Column="1" Foreground="White" FontWeight="ExtraBold"/>
+        <Label Name="lblEmail" Content="Email:" HorizontalAlignment="Left" Margin="96.6,383,0,0" VerticalAlignment="Top" Height="27" Width="51" Grid.Column="1" Foreground="White" FontWeight="ExtraBold"/>
         <TextBox Name="txtEmail" HorizontalAlignment="Left" Height="25" Margin="243.6,387,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="159" Grid.Column="1"/>
         <Label Name="lblUsername" Content="Korisnicko ime:" HorizontalAlignment="Left" Margin="96.6,455,0,0" VerticalAlignment="Top" Height="28" Width="119" Grid.Column="1" Foreground="White" FontWeight="ExtraBold"/>
         <TextBox Name="txtUsername" HorizontalAlignment="Left" Height="25" Margin="243.6,455,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="159" Grid.Column="1"/>
@@ -33,8 +33,8 @@
 
         <Label Name="lblLozinka" Content="Potvrdi lozinku:" HorizontalAlignment="Left" Margin="97,584,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.037,0.42" Grid.Column="1" Foreground="White" FontWeight="ExtraBold"/>
         <PasswordBox Name="txtPotvrdiPassword" HorizontalAlignment="Left" Margin="243.6,584,0,0" VerticalAlignment="Top" Grid.Column="1" Width="159" Height="25"/>
-        <Button Name="btnPotvrdi" Content="Potvrdi" HorizontalAlignment="Left" Margin="212,628,0,0" VerticalAlignment="Top" Width="75" Click="btnPotvrdi_Click" Grid.Column="1" Background="LightCoral" RenderTransformOrigin="0.731,0.635" Foreground="White"/>
-        <Button Name="btnOdustani" Content="Odustani" HorizontalAlignment="Left" Margin="328,628,0,0" VerticalAlignment="Top" Width="75" Click="btnOdustani_Click" Grid.Column="1" Background="LightCoral" RenderTransformOrigin="0.437,0.26" Foreground="White"/>
+        <Button Name="btnPotvrdi" Content="Potvrdi" HorizontalAlignment="Left" Margin="212,628,0,0" VerticalAlignment="Top" Width="75" Click="btnPotvrdi_Click" Grid.Column="1" Background="LightCoral" RenderTransformOrigin="0.731,0.635" Foreground="White" FontWeight="ExtraBold"/>
+        <Button Name="btnOdustani" Content="Odustani" HorizontalAlignment="Left" Margin="328,628,0,0" VerticalAlignment="Top" Width="75" Click="btnOdustani_Click" Grid.Column="1" Background="LightCoral" RenderTransformOrigin="0.437,0.26" Foreground="White" FontWeight="ExtraBold"/>
         <TextBlock Margin="631,10,-377.4,36.8" Grid.Column="1" >  
                  <Hyperlink Name="btnPrijaviSe" Click="btnPrijaviSe_Click" FontSize="10" FontStyle="Italic" Foreground="White">Prijavite se</Hyperlink>
 

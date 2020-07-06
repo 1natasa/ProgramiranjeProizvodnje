@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProgramiranjeProizvodnje.Forme"
         mc:Ignorable="d"
-        Title="frmDeo" Height="450" Width="800">
+        Title="Deo" Height="450" Width="800" Icon="../Resources/process.png">
     <Grid>
         <Label Content="Naziv:" HorizontalAlignment="Left" Margin="138,57,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.349,0.842"/>
         <TextBox Name="txtNaziv"  HorizontalAlignment="Left" Height="23" Margin="237,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label Content="Proizvod:" HorizontalAlignment="Left" Margin="138,128,0,0" VerticalAlignment="Top"/>
         <ComboBox Name="cbxProizvod" HorizontalAlignment="Left" Margin="237,128,0,0" VerticalAlignment="Top" Width="120" SelectedValuePath="ProizvodID" DisplayMemberPath="Proizvod"/>
-        <Label Content="Materijal" HorizontalAlignment="Left" Margin="138,182,0,0" VerticalAlignment="Top"/>
+        <Label Content="Materijal:" HorizontalAlignment="Left" Margin="138,182,0,0" VerticalAlignment="Top"/>
         <ComboBox Name="cbxMaterijal" HorizontalAlignment="Left" Margin="237,182,0,0" VerticalAlignment="Top" Width="120" SelectedValuePath="MaterijalID" DisplayMemberPath="Materijal"/>
-        <Button Name="btnSacuvaj" Content="Sacuvaj" HorizontalAlignment="Left" Margin="237,286,0,0" VerticalAlignment="Top" Width="75" Click="btnSacuvaj_Click"/>
-        <Button Name="btnOtkazi" Content="Otkazi" HorizontalAlignment="Left" Margin="357,286,0,0" VerticalAlignment="Top" Width="75" Click="btnOtkazi_Click"/>
+        <Button Name="btnSacuvaj" Content="Sačuvaj" HorizontalAlignment="Left" Margin="237,286,0,0" VerticalAlignment="Top" Width="75" Click="btnSacuvaj_Click"/>
+        <Button Name="btnOtkazi" Content="Otkaži" HorizontalAlignment="Left" Margin="357,286,0,0" VerticalAlignment="Top" Width="75" Click="btnOtkazi_Click"/>
 
     </Grid>
 </Window>

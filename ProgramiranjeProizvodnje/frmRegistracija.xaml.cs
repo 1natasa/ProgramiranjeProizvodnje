@@ -49,7 +49,7 @@ namespace ProgramiranjeProizvodnje
             {
                 MessageBox.Show("Unesite ime.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
                 txtIme.Focus();
-            } else if (!Regex.IsMatch(txtIme.Text, @"^[a-zA-Z]+$"))
+            } else if (!Regex.IsMatch(txtIme.Text, @"^[a-zA-Z ]+$"))
             {
                 MessageBox.Show("Ime moze da ima smao karaktere.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
                 txtIme.Focus();
@@ -59,7 +59,7 @@ namespace ProgramiranjeProizvodnje
                 MessageBox.Show("Unesite prezime.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
                 txtPrezime.Focus();
             }
-            else if (!Regex.IsMatch(txtPrezime.Text, @"^[a-zA-Z]+$"))
+            else if (!Regex.IsMatch(txtPrezime.Text, @"^[a-zA-Z ]+$"))
             {
                 MessageBox.Show("Prezime moze da ima smao karaktere.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
                 txtPrezime.Focus();

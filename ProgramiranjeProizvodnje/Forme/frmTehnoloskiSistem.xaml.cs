@@ -25,7 +25,7 @@ namespace ProgramiranjeProizvodnje.Forme
         public frmTehnoloskiSistem()
         {
             InitializeComponent();
-            txtNazivTehnoloskogSistema.Focus();
+            txtOznakaTehnoloskogSistema.Focus();
 
             try
             {
@@ -54,25 +54,52 @@ namespace ProgramiranjeProizvodnje.Forme
                 konekcija.Open();
                 if(MainWindow.azuriraj)
                 {
-                    DataRowView red = (DataRowView)MainWindow.pomocni;
-                    string update = @"Update tblTehnoloskiSistem set OznakaTS='"+ txtOznakaTehnoloskogSistema.Text + "', NazivTS='" + txtNazivTehnoloskogSistema.Text + "', PogonID="+ cbxPogon.SelectedValue +" where TehnoloskiSistemID=" + red["TehnoloskiSistemID"];
-                    SqlCommand cmd = new SqlCommand(update, konekcija);
-                    cmd.ExecuteNonQuery();
-                    MainWindow.pomocni = null;
-                    this.Close();
+                    if (txtNazivTehnoloskogSistema.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite naziv tehnološkog sistema.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtNazivTehnoloskogSistema.Focus();
 
+                    }
+                    else if (txtOznakaTehnoloskogSistema.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite oznaku tehnološkog sistema.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtOznakaTehnoloskogSistema.Focus();
+                    }
+                    else
+                    {
+                        DataRowView red = (DataRowView)MainWindow.pomocni;
+                        string update = @"Update tblTehnoloskiSistem set OznakaTS='" + txtOznakaTehnoloskogSistema.Text + "', NazivTS='" + txtNazivTehnoloskogSistema.Text + "', PogonID=" + cbxPogon.SelectedValue + " where TehnoloskiSistemID=" + red["TehnoloskiSistemID"];
+                        SqlCommand cmd = new SqlCommand(update, konekcija);
+                        cmd.ExecuteNonQuery();
+                        MainWindow.pomocni = null;
+                        this.Close();
+                    }
                 } else
                 {
-                    string insert = @"insert into tblTehnoloskiSistem(OznakaTS, NazivTS, PogonID) 
-                            values('" + txtOznakaTehnoloskogSistema.Text +"', '"+ txtNazivTehnoloskogSistema.Text +"', "+ cbxPogon.SelectedValue +")";
-                    SqlCommand cmd = new SqlCommand(insert, konekcija);
-                    cmd.ExecuteNonQuery();
-                    this.Close();
+                    if (txtNazivTehnoloskogSistema.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite naziv tehnološkog sistema.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtNazivTehnoloskogSistema.Focus();
+
+                    }
+                    else if (txtOznakaTehnoloskogSistema.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite oznaku tehnološkog sistema.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtOznakaTehnoloskogSistema.Focus();
+                    }
+                    else
+                    {
+                        string insert = @"insert into tblTehnoloskiSistem(OznakaTS, NazivTS, PogonID) 
+                            values('" + txtOznakaTehnoloskogSistema.Text + "', '" + txtNazivTehnoloskogSistema.Text + "', " + cbxPogon.SelectedValue + ")";
+                        SqlCommand cmd = new SqlCommand(insert, konekcija);
+                        cmd.ExecuteNonQuery();
+                        this.Close();
+                    }
                 }
             }
             catch (SqlException)
             {
-                MessageBox.Show("Unos odredjenih podataka nije validan", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Unos određenih podataka nije validan!", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {

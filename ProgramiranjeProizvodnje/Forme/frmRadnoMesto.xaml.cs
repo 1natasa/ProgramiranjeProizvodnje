@@ -35,26 +35,45 @@ namespace ProgramiranjeProizvodnje.Forme
                 konekcija.Open();
                 if (MainWindow.azuriraj)
                 {
-                    DataRowView red = (DataRowView)MainWindow.pomocni;
-                    string update = @"Update tblRadnoMesto
+                    if (txtNazivRadnogMesta.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite naziv radnog mesta.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtNazivRadnogMesta.Focus();
+
+                    }
+                    else
+                    {
+                        DataRowView red = (DataRowView)MainWindow.pomocni;
+                        string update = @"Update tblRadnoMesto
                                        set NazivRM='" + txtNazivRadnogMesta.Text + "' where RadnoMestoID = " + red["RadnoMestoID"];
-                    SqlCommand cmd = new SqlCommand(update, konekcija);
-                    cmd.ExecuteNonQuery();
-                    MainWindow.pomocni = null;
-                    this.Close();
+                        SqlCommand cmd = new SqlCommand(update, konekcija);
+                        cmd.ExecuteNonQuery();
+                        MainWindow.pomocni = null;
+                        this.Close();
+                    }
+                    
 
                 } else
                 {
-                    string insert = @"insert into tblRadnoMesto(NazivRM) values('" + txtNazivRadnogMesta.Text + "');";
-                    SqlCommand cmd = new SqlCommand(insert, konekcija);
-                    cmd.ExecuteNonQuery();
-                    this.Close();
+                    if (txtNazivRadnogMesta.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite naziv radnog mesta.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtNazivRadnogMesta.Focus();
+
+                    }
+                    else
+                    {
+                        string insert = @"insert into tblRadnoMesto(NazivRM) values('" + txtNazivRadnogMesta.Text + "');";
+                        SqlCommand cmd = new SqlCommand(insert, konekcija);
+                        cmd.ExecuteNonQuery();
+                        this.Close();
+                    }
                 }
 
             }
             catch (SqlException)
             {
-                MessageBox.Show("Unos odredjenih podataka nije validan", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Unos određenih podataka nije validan!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {

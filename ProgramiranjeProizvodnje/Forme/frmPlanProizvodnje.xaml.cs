@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,7 +26,7 @@ namespace ProgramiranjeProizvodnje.Forme
         public frmPlanProizvodnje()
         {
             InitializeComponent();
-            dpDatum.Focus();
+            txtOznaka.Focus();
 
             try
             {
@@ -54,26 +55,54 @@ namespace ProgramiranjeProizvodnje.Forme
                 konekcija.Open();
                 if (MainWindow.azuriraj)
                 {
-                    DataRowView red = (DataRowView)MainWindow.pomocni;
-                    string update = @"Update tblPlanProizvodnje
-                                    set OznakaP='" + txtOznaka.Text +"', Datum= '"+ dpDatum.SelectedDate +"', Kolicina="+txtKolicina.Text+", Napomena='"+txtNapomena.Text+"', RadnikID="+ cbxRadnik.SelectedValue +" where PlanProizvodnjeID=" + red["PlanProizvodnjeID"];
-                    SqlCommand cmd = new SqlCommand(update, konekcija);
-                    cmd.ExecuteNonQuery();
-                    MainWindow.pomocni = null;
-                    this.Close();
+                    if (txtOznaka.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite naziv oznake.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtOznaka.Focus();
+
+                    }
+                    else if (!Regex.IsMatch(txtKolicina.Text, @"^[0-9]+$"))
+                    {
+                        MessageBox.Show("Količina može da sadrži samo brojeve.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtKolicina.Focus();
+                    }
+                    else
+                    {
+                        DataRowView red = (DataRowView)MainWindow.pomocni;
+                        string update = @"Update tblPlanProizvodnje
+                                    set OznakaP='" + txtOznaka.Text + "', Datum= '" + dpDatum.SelectedDate + "', Kolicina=" + txtKolicina.Text + ", Napomena='" + txtNapomena.Text + "', RadnikID=" + cbxRadnik.SelectedValue + " where PlanProizvodnjeID=" + red["PlanProizvodnjeID"];
+                        SqlCommand cmd = new SqlCommand(update, konekcija);
+                        cmd.ExecuteNonQuery();
+                        MainWindow.pomocni = null;
+                        this.Close();
+                    }
 
                 }
                 else
                 {
-                    string insert = @"insert into tblPlanProizvodnje (OznakaP, Datum, Kolicina, Napomena, RadnikID) values('"+txtOznaka.Text+"','"+ dpDatum.SelectedDate +"', "+ txtKolicina.Text +", '"+txtNapomena.Text +"', "+ cbxRadnik.SelectedValue +")";
-                    SqlCommand cmd = new SqlCommand(insert, konekcija);
-                    cmd.ExecuteNonQuery();
-                    this.Close();
+                    if (txtOznaka.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite naziv oznake.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtOznaka.Focus();
+
+                    }
+                    else if (!Regex.IsMatch(txtKolicina.Text, @"^[0-9]+$"))
+                    {
+                        MessageBox.Show("Količina može da sadrži samo brojeve.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtKolicina.Focus();
+                    }
+                    else
+                    {
+                        string insert = @"insert into tblPlanProizvodnje (OznakaP, Datum, Kolicina, Napomena, RadnikID) values('" + txtOznaka.Text + "','" + dpDatum.SelectedDate + "', " + txtKolicina.Text + ", '" + txtNapomena.Text + "', " + cbxRadnik.SelectedValue + ")";
+                        SqlCommand cmd = new SqlCommand(insert, konekcija);
+                        cmd.ExecuteNonQuery();
+                        this.Close();
+                    }
                 }
             }
             catch (SqlException)
             {
-                MessageBox.Show("Unos odredjenih podataka nije validan", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Unos određenih podataka nije validan!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {

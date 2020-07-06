@@ -447,7 +447,7 @@ namespace ProgramiranjeProizvodnje
             konekcija.Open();
             try
             {
-                string upit = "select PlanProizvodnjeID, Datum, Kolicina, Napomena, r.ImeR + ' ' + r.PrezimeR as Radnik, OznakaP as 'Oznaka' from tblPlanProizvodnje pp inner join tblRadnik r on pp.RadnikID=r.RadnikID";
+                string upit = "select PlanProizvodnjeID, OznakaP as 'Oznaka', Datum, Kolicina, Napomena, r.ImeR + ' ' + r.PrezimeR as Radnik from tblPlanProizvodnje pp inner join tblRadnik r on pp.RadnikID=r.RadnikID";
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(upit, konekcija);
                 DataTable dt = new DataTable("tblPlanProzivodnje");
                 dataAdapter.Fill(dt);
@@ -514,7 +514,7 @@ namespace ProgramiranjeProizvodnje
             konekcija.Open();
             try
             {
-                string upit = "select ProizvodID, VrstaProizvoda as 'Vrsta', NazivP as 'Naziv', Cena, Boja, pp.OznakaP from tblProizvod p inner join tblPlanProizvodnje pp on p.PlanProizvodnjeID=pp.PlanProizvodnjeID";
+                string upit = "select ProizvodID, VrstaProizvoda as 'Vrsta', NazivP as 'Naziv', Cena, Boja, pp.OznakaP as 'Plan proizvodnje' from tblProizvod p inner join tblPlanProizvodnje pp on p.PlanProizvodnjeID=pp.PlanProizvodnjeID";
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(upit, konekcija);
                 DataTable dt = new DataTable("tblProizvod");
                 dataAdapter.Fill(dt);
@@ -648,7 +648,7 @@ namespace ProgramiranjeProizvodnje
             konekcija.Open();
             try
             {
-                string upit = " select MaterijalID, VrstaM as 'Vrsta materijala', s.OznakaS + ',' + s.LokacijaS as 'Skladiste' from tblMaterijal m inner join tblSkladiste s on m.SkladisteID=s.SkladisteID ";
+                string upit = " select MaterijalID, VrstaM as 'Vrsta materijala', s.OznakaS + ', ' + s.LokacijaS as 'Skladiste' from tblMaterijal m inner join tblSkladiste s on m.SkladisteID=s.SkladisteID ";
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(upit, konekcija);
                 DataTable dt = new DataTable("tblMaterijal");
                 dataAdapter.Fill(dt);
@@ -740,7 +740,7 @@ namespace ProgramiranjeProizvodnje
         {
             frmRadnoMesto prozor = new frmRadnoMesto();
             prozor.ShowDialog();
-            string upit = "select RadnoMestoID, NazivRM from tblRadnoMesto";
+            string upit = "select RadnoMestoID, NazivRM as 'Naziv radnog mesta' from tblRadnoMesto";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(upit, konekcija);
             DataTable dt = new DataTable("tblRadnoMesto");
             dataAdapter.Fill(dt);
@@ -795,7 +795,7 @@ namespace ProgramiranjeProizvodnje
                 konekcija.Open();
                 DataRowView red = (DataRowView)dataGridCentralni.SelectedItems[0];
                 string upit = "Delete from tblRadnoMesto where RadnoMestoID= " + red["RadnoMestoID"];
-                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da zelite da obrisite Radno mesto?", "Upozorenje", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da žeite da obrišete Radno mesto?", "Upozorenje!", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (rezultat == MessageBoxResult.Yes)
                 {
@@ -806,12 +806,12 @@ namespace ProgramiranjeProizvodnje
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+                MessageBox.Show("Niste selektovali red.", "Obaveštenje");
 
             }
             catch (SqlException)
             {
-                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguce obrisati red.", "Obavestenje");
+                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguće obrisati red.", "Obaveštenje!");
             }
             finally
             {
@@ -873,7 +873,7 @@ namespace ProgramiranjeProizvodnje
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+                MessageBox.Show("Niste selektovali red.", "Obaveštenje!");
             }
             finally
             {
@@ -898,7 +898,7 @@ namespace ProgramiranjeProizvodnje
                 konekcija.Open();
                 DataRowView red = (DataRowView)dataGridCentralni.SelectedItems[0];
                 string upit = "Delete from tblRadnik where RadnikID=" + red["RadnikID"];
-                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da zelite da obrisite Kartu?", "Upozorenje", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da želite da obrišete Radnika?", "Upozorenje!", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (rezultat == MessageBoxResult.Yes)
                 {
@@ -910,13 +910,13 @@ namespace ProgramiranjeProizvodnje
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+                MessageBox.Show("Niste selektovali red.", "Obaveštenje!");
 
 
             }
             catch (SqlException)
             {
-                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguce obrisati red.", "Obavestenje");
+                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguće obrisati red.", "Obaveštenje!");
             }
             finally
             {
@@ -964,7 +964,7 @@ namespace ProgramiranjeProizvodnje
 
             catch (Exception)
             {
-                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+                MessageBox.Show("Niste selektovali red.", "Obaveštenje!");
 
             }
             finally
@@ -988,7 +988,7 @@ namespace ProgramiranjeProizvodnje
                 konekcija.Open();
                 DataRowView red = (DataRowView)dataGridCentralni.SelectedItems[0];
                 string upit = "Delete from tblMesto where MestoID=" + red["MestoID"];
-                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da zelite da obrisite Kartu?", "Upozorenje", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da želite da obrišete Mesto?", "Upozorenje!", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (rezultat == MessageBoxResult.Yes)
                 {
@@ -998,13 +998,13 @@ namespace ProgramiranjeProizvodnje
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+                MessageBox.Show("Niste selektovali red.", "Obaveštenje!");
 
 
             }
             catch (SqlException)
             {
-                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguce obrisati red.", "Obavestenje");
+                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguće obrisati red.", "Obaveštenje!");
             }
             finally
             {
@@ -1047,7 +1047,7 @@ namespace ProgramiranjeProizvodnje
             }
             catch (Exception)
             {
-                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+                MessageBox.Show("Niste selektovali red.", "Obaveštenje!");
                 
 
             }
@@ -1072,7 +1072,7 @@ namespace ProgramiranjeProizvodnje
                 konekcija.Open();
                 DataRowView red = (DataRowView)dataGridCentralni.SelectedItems[0];
                 string upit = "Delete from tblPogon where PogonID= " + red["PogonID"];
-                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da zelite da obrisite Pogon?", "Upozorenje", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da želite da obrišete Pogon?", "Upozorenje!", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (rezultat == MessageBoxResult.Yes)
                 {
@@ -1084,13 +1084,13 @@ namespace ProgramiranjeProizvodnje
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+                MessageBox.Show("Niste selektovali red.", "Obaveštenje!");
 
 
             }
             catch (SqlException)
             {
-                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguce obrisati red.", "Obavestenje");
+                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguće obrisati red.", "Obaveštenje!");
             }
             finally
             {
@@ -1140,7 +1140,7 @@ namespace ProgramiranjeProizvodnje
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+                MessageBox.Show("Niste selektovali red.", "Obaveštenje!");
             }
             finally
             {
@@ -1163,7 +1163,7 @@ namespace ProgramiranjeProizvodnje
                 konekcija.Open();
                 DataRowView red = (DataRowView)dataGridCentralni.SelectedItems[0];
                 string upit = "Delete from tblTehnoloskiSistem where TehnoloskiSistemID= " + red["TehnoloskiSistemID"];
-                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da zelite da obrisite Tehnoloski sistem?", "Upozorenje", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da želite da obrišete Tehnološki sistem?", "Upozorenje!", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (rezultat == MessageBoxResult.Yes)
                 {
@@ -1173,13 +1173,13 @@ namespace ProgramiranjeProizvodnje
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+                MessageBox.Show("Niste selektovali red.", "Obaveštenje!");
 
 
             }
             catch (SqlException)
             {
-                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguce obrisati red.", "Obavestenje");
+                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguće obrisati red.", "Obaveštenje!");
             }
             finally
             {
@@ -1195,7 +1195,7 @@ namespace ProgramiranjeProizvodnje
         {
             frmPlanProizvodnje prozor = new frmPlanProizvodnje();
             prozor.ShowDialog();
-            string upit = "select PlanProizvodnjeID,OznakaP Datum, Kolicina, Napomena, r.ImeR + ' ' + r.PrezimeR as 'Radnik'  from tblPlanProizvodnje pp inner join tblRadnik r on pp.RadnikID=r.RadnikID ";
+            string upit = "select PlanProizvodnjeID,OznakaP as 'Oznaka', Datum, Kolicina,Napomena, r.ImeR + ' ' + r.PrezimeR as 'Radnik'  from tblPlanProizvodnje pp inner join tblRadnik r on pp.RadnikID=r.RadnikID ";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(upit, konekcija);
             DataTable dt = new DataTable("tblPlanProizvodnje");
             dataAdapter.Fill(dt);
@@ -1231,7 +1231,7 @@ namespace ProgramiranjeProizvodnje
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+                MessageBox.Show("Niste selektovali red.", "Obaveštenje!");
             }
             finally
             {
@@ -1252,7 +1252,7 @@ namespace ProgramiranjeProizvodnje
                 konekcija.Open();
                 DataRowView red = (DataRowView)dataGridCentralni.SelectedItems[0];
                 string upit = "Delete from tblPlanProizvodnje where PlanProizvodnjeID= " + red["PlanProizvodnjeID"];
-                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da zelite da obrisite Plan  proizvodnje?", "Upozorenje", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da želite da obrišete Plan proizvodnje?", "Upozorenje!", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (rezultat == MessageBoxResult.Yes)
                 {
@@ -1262,13 +1262,13 @@ namespace ProgramiranjeProizvodnje
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+                MessageBox.Show("Niste selektovali red.", "Obaveštenje!");
 
 
             }
             catch (SqlException)
             {
-                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguce obrisati red.", "Obavestenje");
+                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguće obrisati red.", "Obaveštenje!");
             }
             finally
             {
@@ -1284,7 +1284,7 @@ namespace ProgramiranjeProizvodnje
         {
             frmProizvod prozor = new frmProizvod();
             prozor.ShowDialog();
-            string upit = "select ProizvodID,VrstaProizvoda as 'Vrsta', NazivP as 'Naziv', Boja, Cena, pp.OznakaP  from tblProizvod p inner join tblPlanProizvodnje pp on p.PlanProizvodnjeID=pp.PlanProizvodnjeID ";
+            string upit = "select ProizvodID,VrstaProizvoda as 'Vrsta', NazivP as 'Naziv', Boja, Cena, pp.OznakaP as 'Plan proizvodnje' from tblProizvod p inner join tblPlanProizvodnje pp on p.PlanProizvodnjeID=pp.PlanProizvodnjeID ";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(upit, konekcija);
             DataTable dt = new DataTable("tblProizvod");
             dataAdapter.Fill(dt);
@@ -1321,7 +1321,7 @@ namespace ProgramiranjeProizvodnje
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+                MessageBox.Show("Niste selektovali red.", "Obaveštenje!");
             }
             finally
             {
@@ -1342,7 +1342,7 @@ namespace ProgramiranjeProizvodnje
                 konekcija.Open();
                 DataRowView red = (DataRowView)dataGridCentralni.SelectedItems[0];
                 string upit = "Delete from tblProizvod where ProizvodID= " + red["ProizvodID"];
-                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da zelite da obrisite Proizvod?", "Upozorenje", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da želite da obrišete Proizvod?", "Upozorenje!", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (rezultat == MessageBoxResult.Yes)
                 {
@@ -1352,13 +1352,13 @@ namespace ProgramiranjeProizvodnje
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+                MessageBox.Show("Niste selektovali red.", "Obaveštenje!");
 
 
             }
             catch (SqlException)
             {
-                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguce obrisati red.", "Obavestenje");
+                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguće obrisati red.", "Obaveštenje!");
             }
             finally
             {
@@ -1408,7 +1408,7 @@ namespace ProgramiranjeProizvodnje
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+                MessageBox.Show("Niste selektovali red.", "Obaveštenje!");
             }
             finally
             {
@@ -1430,7 +1430,7 @@ namespace ProgramiranjeProizvodnje
                 konekcija.Open();
                 DataRowView red = (DataRowView)dataGridCentralni.SelectedItems[0];
                 string upit = "Delete from tblDeo where DeoID= " + red["DeoID"];
-                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da zelite da obrisite Deo?", "Upozorenje", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da želite da obrišete Deo?", "Upozorenje!", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (rezultat == MessageBoxResult.Yes)
                 {
@@ -1440,13 +1440,13 @@ namespace ProgramiranjeProizvodnje
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+                MessageBox.Show("Niste selektovali red.", "Obaveštenje!");
 
 
             }
             catch (SqlException)
             {
-                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguce obrisati red.", "Obavestenje");
+                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguće obrisati red.", "Obaveštenje!");
             }
             finally
             {
@@ -1462,7 +1462,7 @@ namespace ProgramiranjeProizvodnje
         {
             frmMaterijal prozor = new frmMaterijal();
             prozor.ShowDialog();
-            string upit = "select MaterijalID, VrstaM, s.OznakaS + ', ' + s.LokacijaS as 'Skladiste' from tblMaterijal m inner join tblSkladiste s on m.SkladisteID=s.SkladisteID ";
+            string upit = "select MaterijalID, VrstaM as 'Vrsta materijala', s.OznakaS + ', ' + s.LokacijaS as 'Skladiste' from tblMaterijal m inner join tblSkladiste s on m.SkladisteID=s.SkladisteID ";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(upit, konekcija);
             DataTable dt = new DataTable("tblMaterijal");
             dataAdapter.Fill(dt);
@@ -1496,7 +1496,7 @@ namespace ProgramiranjeProizvodnje
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+                MessageBox.Show("Niste selektovali red.", "Obaveštenje!");
             }
             finally
             {
@@ -1517,7 +1517,7 @@ namespace ProgramiranjeProizvodnje
                 konekcija.Open();
                 DataRowView red = (DataRowView)dataGridCentralni.SelectedItems[0];
                 string upit = "Delete from tblMaterijal where MaterijalID= " + red["MaterijalID"];
-                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da zelite da obrisite Materijal?", "Upozorenje", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da želite da obrišete Materijal?", "Upozorenje!", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (rezultat == MessageBoxResult.Yes)
                 {
@@ -1527,13 +1527,13 @@ namespace ProgramiranjeProizvodnje
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+                MessageBox.Show("Niste selektovali red.", "Obaveštenje!");
 
 
             }
             catch (SqlException)
             {
-                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguce obrisati red.", "Obavestenje");
+                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguće obrisati red.", "Obaveštenje!");
             }
             finally
             {
@@ -1583,7 +1583,7 @@ namespace ProgramiranjeProizvodnje
             }
             catch (Exception)
             {
-                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+                MessageBox.Show("Niste selektovali red.", "Obaveštenje!");
 
             }
             finally
@@ -1607,7 +1607,7 @@ namespace ProgramiranjeProizvodnje
                 konekcija.Open();
                 DataRowView red = (DataRowView)dataGridCentralni.SelectedItems[0];
                 string upit = "Delete from tblSkladiste where SkladisteID=" + red["SkladisteID"];
-                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da zelite da obrisite Skladiste?", "Upozorenje", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult rezultat = MessageBox.Show("Da li ste sigurni da želite da obrišete Skladište?", "Upozorenje!", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (rezultat == MessageBoxResult.Yes)
                 {
                     SqlCommand komanda = new SqlCommand(upit, konekcija);
@@ -1616,13 +1616,13 @@ namespace ProgramiranjeProizvodnje
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("Niste selektovali red.", "Obavestenje");
+                MessageBox.Show("Niste selektovali red.", "Obaveštenje!");
 
 
             }
             catch (SqlException)
             {
-                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguce obrisati red.", "Obavestenje");
+                MessageBox.Show("Postoje povezani podaci u drugoj tabeli. Nije moguće obrisati red.", "Obaveštenje!");
             }
             finally
             {

@@ -35,26 +35,44 @@ namespace ProgramiranjeProizvodnje.Forme
                 konekcija.Open();
                 if(MainWindow.azuriraj)
                 {
-                    DataRowView red = (DataRowView)MainWindow.pomocni;
-                    string update = @"Update tblPogon set OznakaP='" + txtOznakaPogona.Text + "' where PogonID=" + red["PogonID"];
-                    SqlCommand cmd = new SqlCommand(update, konekcija);
-                    cmd.ExecuteNonQuery();
-                    MainWindow.pomocni = null;
-                    this.Close();
+                    if (txtOznakaPogona.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite naziv oznake.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtOznakaPogona.Focus();
 
+                    }
+                    
+                    else
+                    {
+                        DataRowView red = (DataRowView)MainWindow.pomocni;
+                        string update = @"Update tblPogon set OznakaP='" + txtOznakaPogona.Text + "' where PogonID=" + red["PogonID"];
+                        SqlCommand cmd = new SqlCommand(update, konekcija);
+                        cmd.ExecuteNonQuery();
+                        MainWindow.pomocni = null;
+                        this.Close();
+                    }
 
                 } else
                 {
-                    string insert = "insert into tblPogon(OznakaP) values('"+ txtOznakaPogona.Text +"')";
-                    SqlCommand cmd = new SqlCommand(insert, konekcija);
-                    cmd.ExecuteNonQuery();
-                    this.Close();
+                    if (txtOznakaPogona.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite naziv oznake.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtOznakaPogona.Focus();
 
+                    }
+
+                    else
+                    {
+                        string insert = "insert into tblPogon(OznakaP) values('" + txtOznakaPogona.Text + "')";
+                        SqlCommand cmd = new SqlCommand(insert, konekcija);
+                        cmd.ExecuteNonQuery();
+                        this.Close();
+                    }
                 }
             }
             catch (SqlException)
             {
-                MessageBox.Show("Unos odredjenih podataka nije validan", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Unos određenih podataka nije validan!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {

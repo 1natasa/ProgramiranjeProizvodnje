@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -63,26 +64,56 @@ namespace ProgramiranjeProizvodnje.Forme
                 konekcija.Open();
                 if (MainWindow.azuriraj)
                 {
-                    DataRowView red = (DataRowView)MainWindow.pomocni;
-                    string update = @"Update tblDeo set NazivD='"+ txtNaziv.Text +"', ProizvodID="+ cbxProizvod.SelectedValue +", MaterijalID=" + cbxMaterijal.SelectedValue +" where DeoID=" + red["DeoID"];
-                    SqlCommand cmd = new SqlCommand(update, konekcija);
-                    cmd.ExecuteNonQuery();
-                    MainWindow.pomocni = null;
-                    this.Close();
+
+                    if(txtNaziv.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite naziv.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtNaziv.Focus();
+
+                    } else if(!Regex.IsMatch(txtNaziv.Text, @"^[a-zA-Z ]+$"))
+                    {
+                        MessageBox.Show("Naziv može da sadrži samo slova.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtNaziv.Focus();
+                    }
+                    else
+                    {
+                        DataRowView red = (DataRowView)MainWindow.pomocni;
+                        string update = @"Update tblDeo set NazivD='" + txtNaziv.Text + "', ProizvodID=" + cbxProizvod.SelectedValue + ", MaterijalID=" + cbxMaterijal.SelectedValue + " where DeoID=" + red["DeoID"];
+                        SqlCommand cmd = new SqlCommand(update, konekcija);
+                        cmd.ExecuteNonQuery();
+                        MainWindow.pomocni = null;
+                        this.Close();
+                    }
+                    
 
                 }
                 else
                 {
-                    string insert = @"insert into tblDeo(NazivD, ProizvodID, MaterijalID) values('"+ txtNaziv.Text +"', "+cbxProizvod.SelectedValue +", "+ cbxMaterijal.SelectedValue +")";
-                    
-                    SqlCommand cmd = new SqlCommand(insert, konekcija);
-                    cmd.ExecuteNonQuery();
-                    this.Close();
+
+                    if (txtNaziv.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite naziv.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtNaziv.Focus();
+
+                    }
+                    else if (!Regex.IsMatch(txtNaziv.Text, @"^[a-zA-Z ]+$"))
+                    {
+                        MessageBox.Show("Naziv može da sadrži samo slova.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtNaziv.Focus();
+                    }
+                    else
+                    {
+                        string insert = @"insert into tblDeo(NazivD, ProizvodID, MaterijalID) values('" + txtNaziv.Text + "', " + cbxProizvod.SelectedValue + ", " + cbxMaterijal.SelectedValue + ")";
+
+                        SqlCommand cmd = new SqlCommand(insert, konekcija);
+                        cmd.ExecuteNonQuery();
+                        this.Close();
+                    }
                 }
             }
             catch (SqlException)
             {
-                MessageBox.Show("Unos odredjenih podataka nije validan", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Unos određenih podataka nije validan!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {

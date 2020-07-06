@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -53,26 +54,73 @@ namespace ProgramiranjeProizvodnje.Forme
                 konekcija.Open();
                 if (MainWindow.azuriraj)
                 {
-                    DataRowView red = (DataRowView)MainWindow.pomocni;
-                    
-                    string update=@"update tblProizvod set VrstaProizvoda='" + txtVrsta.Text +"', NazivP='"+txtNaziv.Text + "', Cena=" + txtCena.Text +", Boja= '"+ txtBoja.Text +"', PlanProizvodnjeID="+cbxPlanProizvodnje.SelectedValue +" where ProizvodID=" + red["ProizvodID"];
-                    SqlCommand cmd = new SqlCommand(update, konekcija);
-                    cmd.ExecuteNonQuery();
-                    MainWindow.pomocni = null;
-                    this.Close();
+                    if (txtNaziv.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite naziv proizvoda.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtNaziv.Focus();
 
+                    }
+                    else if(txtVrsta.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite vrstu proizvoda.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtVrsta.Focus();
+                    } else if(txtBoja.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite boju proizvoda.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtVrsta.Focus();
+                    }
+                    else if (!Regex.IsMatch(txtCena.Text, @"^[0-9]+$"))
+                    {
+                        MessageBox.Show("Cena može da sadrži samo brojeve.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtCena.Focus();
+                    }
+                    else
+                    {
+                        DataRowView red = (DataRowView)MainWindow.pomocni;
+
+                        string update = @"update tblProizvod set VrstaProizvoda='" + txtVrsta.Text + "', NazivP='" + txtNaziv.Text + "', Cena=" + txtCena.Text + ", Boja= '" + txtBoja.Text + "', PlanProizvodnjeID=" + cbxPlanProizvodnje.SelectedValue + " where ProizvodID=" + red["ProizvodID"];
+                        SqlCommand cmd = new SqlCommand(update, konekcija);
+                        cmd.ExecuteNonQuery();
+                        MainWindow.pomocni = null;
+                        this.Close();
+                    }
                 }
                 else
                 {
-                    string insert = @"insert into tblProizvod(VrstaProizvoda, NazivP,Cena, Boja, PlanProizvodnjeID) values('"+ txtVrsta.Text +"', '"+txtNaziv.Text +"', "+txtCena.Text+", '"+txtBoja.Text +"', '"+cbxPlanProizvodnje.SelectedValue +"')";
-                    SqlCommand cmd = new SqlCommand(insert, konekcija);
-                    cmd.ExecuteNonQuery();
-                    this.Close();
+
+                    if (txtNaziv.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite naziv proizvoda.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtNaziv.Focus();
+
+                    }
+                    else if (txtVrsta.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite vrstu proizvoda.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtVrsta.Focus();
+                    }
+                    else if (txtBoja.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite boju proizvoda.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtVrsta.Focus();
+                    }
+                    else if (!Regex.IsMatch(txtCena.Text, @"^[0-9]+$"))
+                    {
+                        MessageBox.Show("Cena može da sadrži samo brojeve.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtCena.Focus();
+                    }
+                    else
+                    {
+                        string insert = @"insert into tblProizvod(VrstaProizvoda, NazivP,Cena, Boja, PlanProizvodnjeID) values('" + txtVrsta.Text + "', '" + txtNaziv.Text + "', " + txtCena.Text + ", '" + txtBoja.Text + "', '" + cbxPlanProizvodnje.SelectedValue + "')";
+                        SqlCommand cmd = new SqlCommand(insert, konekcija);
+                        cmd.ExecuteNonQuery();
+                        this.Close();
+                    }
                 }
             }
             catch (SqlException)
             {
-                MessageBox.Show("Unos odredjenih podataka nije validan", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Unos određenih podataka nije validan!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {

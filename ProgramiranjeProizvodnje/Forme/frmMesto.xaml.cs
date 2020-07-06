@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,27 +36,64 @@ namespace ProgramiranjeProizvodnje.Forme
                 konekcija.Open();
                 if(MainWindow.azuriraj)
                 {
-                    DataRowView red = (DataRowView)MainWindow.pomocni;
-                    string update = @"Update tblMesto 
+                    if (txtNazivMesta.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite naziv mesta.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtNazivMesta.Focus();
+
+                    }
+                    else if (!Regex.IsMatch(txtNazivMesta.Text, @"^[a-zA-Z ]+$"))
+                    {
+                        MessageBox.Show("Naziv može da sadrži samo slova.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtNazivMesta.Focus();
+                    } else if(!Regex.IsMatch(txtPostanskiBroj.Text, @"^[0-9]+$"))
+                    {
+                        MessageBox.Show("Naziv može da sadrži samo brojeve.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtPostanskiBroj.Focus();
+                    }
+                    else
+                    {
+                        DataRowView red = (DataRowView)MainWindow.pomocni;
+                        string update = @"Update tblMesto 
                                        set NazivM = '" + txtNazivMesta.Text + "',PostanskiBroj=" + txtPostanskiBroj.Text + " where MestoID=" + red["MestoID"];
-                    SqlCommand cmd = new SqlCommand(update, konekcija);
-                    cmd.ExecuteNonQuery();
-                    MainWindow.pomocni = null;
-                    this.Close();
+                        SqlCommand cmd = new SqlCommand(update, konekcija);
+                        cmd.ExecuteNonQuery();
+                        MainWindow.pomocni = null;
+                        this.Close();
+                    }
 
                 } else
                 {
-                    string insert = @"insert into tblMesto(NazivM,PostanskiBroj)" +
-                        "values('"+ txtNazivMesta.Text +"', " +txtPostanskiBroj.Text +");";
-                    SqlCommand cmd = new SqlCommand(insert, konekcija);
-                    cmd.ExecuteNonQuery();
-                    this.Close();
+                    if (txtNazivMesta.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite naziv mesta.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtNazivMesta.Focus();
+
+                    }
+                    else if (!Regex.IsMatch(txtNazivMesta.Text, @"^[a-zA-Z ]+$"))
+                    {
+                        MessageBox.Show("Naziv može da sadrži samo slova.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtNazivMesta.Focus();
+                    }
+                    else if (!Regex.IsMatch(txtPostanskiBroj.Text, @"^[0-9]+$"))
+                    {
+                        MessageBox.Show("Naziv može da sadrži samo brojeve.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtPostanskiBroj.Focus();
+                    }
+                    else
+                    {
+                        string insert = @"insert into tblMesto(NazivM,PostanskiBroj)" +
+                        "values('" + txtNazivMesta.Text + "', " + txtPostanskiBroj.Text + ");";
+                        SqlCommand cmd = new SqlCommand(insert, konekcija);
+                        cmd.ExecuteNonQuery();
+                        this.Close();
+                    }
                 }
 
             }
             catch (SqlException)
             {
-                MessageBox.Show("Unos odredjenih podataka nije validan", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Unos određenih podataka nije validan!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {

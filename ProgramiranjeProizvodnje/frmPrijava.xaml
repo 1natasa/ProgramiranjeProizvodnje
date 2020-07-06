@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProgramiranjeProizvodnje"
         mc:Ignorable="d"
-        Title="Prijava" Height="450" Width="800" >
+        Title="Prijava" Height="450" Width="800" Icon="Resources/process.png">
     <Window.Resources>
         <Style x:Key="PasswordBoxStyle1" TargetType="{x:Type PasswordBox}">
             <Setter Property="PasswordChar" Value="●"/>
@@ -51,7 +51,7 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Label Name="lblKorisnickoIme" Content="Korisnicko ime:" HorizontalAlignment="Left" Margin="217,152,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.232,1.725" FontWeight="ExtraBold" Foreground="White"/>
+        <Label Name="lblKorisnickoIme" Content="Korisničko ime:" HorizontalAlignment="Left" Margin="217,152,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.232,1.725" FontWeight="ExtraBold" Foreground="White"/>
         <TextBox Name="txtKorisnickoIme" HorizontalAlignment="Left" Height="23" Margin="374,155,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120">
             <!--<TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -61,7 +61,7 @@
         </TextBox>
         <Label Name="lblLozinka" Content="Lozinka:" HorizontalAlignment="Left" Margin="217,213,0,0" VerticalAlignment="Top" FontWeight="ExtraBold" Foreground="White"/>
         <PasswordBox Name="txtPassword" HorizontalAlignment="Left" Margin="374,213,0,0" VerticalAlignment="Top" Width="120" Height="23" Style="{DynamicResource PasswordBoxStyle1}"/>
-        <Button Name="btnPotvrdi" Content="Potvrdi" HorizontalAlignment="Left" Margin="400,286,0,0" VerticalAlignment="Top" Width="75" Click="btnPotvrdi_Click" RenderTransformOrigin="0.368,0.6" Foreground="White" Background="LightCoral" />
+        <Button Name="btnPotvrdi" Content="Potvrdi" HorizontalAlignment="Left" Margin="400,286,0,0" VerticalAlignment="Top" Width="75" Click="btnPotvrdi_Click" RenderTransformOrigin="0.368,0.6" Foreground="White" Background="LightCoral" FontWeight="ExtraBold" />
         <TextBlock Name="textBlockHeading" VerticalAlignment="Top" FontSize="10" FontStyle="Italic" Padding="5" Foreground="White">  
             Nemate nalog? Registrujte se 
             <TextBlock>  

@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -69,38 +70,128 @@ namespace ProgramiranjeProizvodnje.Forme
                 konekcija.Open();
                 if(MainWindow.azuriraj)
                 {
-                    DataRowView red = (DataRowView)MainWindow.pomocni;
 
-                    string update = @"Update tblRadnik set ImeR='" + txtImeRadnika.Text + "', PrezimeR= '" + txtPrezimeRadnika.Text + "', JMBG_R='" + txtJMBGRadnika.Text + "', TelefonR='" + txtTelefonRadnika.Text + "', AdresaR='" + txtAdresaRadnika.Text + "', MestoID=" + cbxMesto.SelectedValue + ", RadnoMestoID=" + cbxRadnoMesto.SelectedValue + ", PogonID=" + cbxPogon.SelectedValue + ", Status = '" + Convert.ToInt32(chkStatus.IsChecked) + "' where RadnikID=" + red["RadnikID"];
+                    if (txtImeRadnika.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite ime radnika.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtImeRadnika.Focus();
 
-                    SqlCommand cmd = new SqlCommand(update, konekcija);
-                    cmd.ExecuteNonQuery();
-                    MainWindow.pomocni = null;
-                    this.Close();
+                    }
+                    else if (!Regex.IsMatch(txtImeRadnika.Text, @"^[a-zA-Z ]+$"))
+                    {
+                        MessageBox.Show("Ime može da sadrži samo slova.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtImeRadnika.Focus();
+                    }
+                    else if (txtPrezimeRadnika.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite prezime radnika.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtPrezimeRadnika.Focus();
 
+                    }
+                    else if (!Regex.IsMatch(txtPrezimeRadnika.Text, @"^[a-zA-Z ]+$"))
+                    {
+                        MessageBox.Show("Prezime može da sadrži samo slova.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtPrezimeRadnika.Focus();
+                    }
+                    else if (txtAdresaRadnika.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite adresu radnika.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtAdresaRadnika.Focus();
+                    }
+                    else if (txtJMBGRadnika.Text.Length != 13)
+                    {
+                        MessageBox.Show("JMBG mora da ima 13 brojeva.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtJMBGRadnika.Focus();
+                    }
+                    else if (!Regex.IsMatch(txtJMBGRadnika.Text, @"^[0-9]+$"))
+                    {
+                        MessageBox.Show("JMBG može da sadrži samo brojeve.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtJMBGRadnika.Focus();
+                    }
+                    else if (!Regex.IsMatch(txtTelefonRadnika.Text, @"^[0-9]+$"))
+                    {
+                        MessageBox.Show("Telefon može da sadrži samo brojeve.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtJMBGRadnika.Focus();
+                    }
+                    else
+                    {
+                        DataRowView red = (DataRowView)MainWindow.pomocni;
+
+                        string update = @"Update tblRadnik set ImeR='" + txtImeRadnika.Text + "', PrezimeR= '" + txtPrezimeRadnika.Text + "', JMBG_R='" + txtJMBGRadnika.Text + "', TelefonR='" + txtTelefonRadnika.Text + "', AdresaR='" + txtAdresaRadnika.Text + "', MestoID=" + cbxMesto.SelectedValue + ", RadnoMestoID=" + cbxRadnoMesto.SelectedValue + ", PogonID=" + cbxPogon.SelectedValue + ", Status = '" + Convert.ToInt32(chkStatus.IsChecked) + "' where RadnikID=" + red["RadnikID"];
+
+                        SqlCommand cmd = new SqlCommand(update, konekcija);
+                        cmd.ExecuteNonQuery();
+                        MainWindow.pomocni = null;
+                        this.Close();
+                    }
                     
 
 
                 } else
                 {
-                    string insert = @"insert into tblRadnik(ImeR, PrezimeR, JMBG_R, TelefonR, AdresaR, MestoID, RadnoMestoID, PogonID, Status)" +
-                        "values('"+ txtImeRadnika.Text +"'," +
-                        " '"+ txtPrezimeRadnika.Text + "'," +
-                        " '"+ txtJMBGRadnika.Text +"', '"+ txtTelefonRadnika.Text + "'," +
-                        " '"+ txtAdresaRadnika.Text +"', "+ cbxMesto.SelectedValue +"," +
-                        " "+ cbxRadnoMesto.SelectedValue +", "+ cbxPogon.SelectedValue +", 1 ); ";
-                    lblStatus.Visibility = Visibility.Collapsed;
-                    chkStatus.Visibility = Visibility.Collapsed;
+                    if (txtImeRadnika.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite ime radnika.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtImeRadnika.Focus();
 
-                    SqlCommand cmd = new SqlCommand(insert, konekcija);
-                    cmd.ExecuteNonQuery();
-                    this.Close();
+                    }
+                    else if (!Regex.IsMatch(txtImeRadnika.Text, @"^[a-zA-Z ]+$"))
+                    {
+                        MessageBox.Show("Ime može da sadrži samo slova.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtImeRadnika.Focus();
+                    }
+                    else if (txtPrezimeRadnika.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite prezime radnika.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtPrezimeRadnika.Focus();
+
+                    }
+                    else if (!Regex.IsMatch(txtPrezimeRadnika.Text, @"^[a-zA-Z ]+$"))
+                    {
+                        MessageBox.Show("Prezime može da sadrži samo slova.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtPrezimeRadnika.Focus();
+                    }
+                    else if (txtAdresaRadnika.Text.Length == 0)
+                    {
+                        MessageBox.Show("Unesite adresu radnika.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtAdresaRadnika.Focus();
+                    }
+                    else if (txtJMBGRadnika.Text.Length != 13)
+                    {
+                        MessageBox.Show("JMBG mora da ima 13 brojeva.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtJMBGRadnika.Focus();
+                    }
+                    else if (!Regex.IsMatch(txtJMBGRadnika.Text, @"^[0-9]+$"))
+                    {
+                        MessageBox.Show("JMBG može da sadrži samo brojeve.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtJMBGRadnika.Focus();
+                    }
+                    else if (!Regex.IsMatch(txtTelefonRadnika.Text, @"^[0-9]+$"))
+                    {
+                        MessageBox.Show("Telefon može da sadrzi samo brojeve.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtJMBGRadnika.Focus();
+                    }
+                    else
+                    {
+                        string insert = @"insert into tblRadnik(ImeR, PrezimeR, JMBG_R, TelefonR, AdresaR, MestoID, RadnoMestoID, PogonID, Status)" +
+                        "values('" + txtImeRadnika.Text + "'," +
+                        " '" + txtPrezimeRadnika.Text + "'," +
+                        " '" + txtJMBGRadnika.Text + "', '" + txtTelefonRadnika.Text + "'," +
+                        " '" + txtAdresaRadnika.Text + "', " + cbxMesto.SelectedValue + "," +
+                        " " + cbxRadnoMesto.SelectedValue + ", " + cbxPogon.SelectedValue + ", 1 ); ";
+                        lblStatus.Visibility = Visibility.Collapsed;
+                        chkStatus.Visibility = Visibility.Collapsed;
+
+                        SqlCommand cmd = new SqlCommand(insert, konekcija);
+                        cmd.ExecuteNonQuery();
+                        this.Close();
+                    }
                 }
 
             }
             catch (SqlException)
             {
-                MessageBox.Show("Unos odredjenih podataka nije validan", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Unos određenih podataka nije validan!", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {

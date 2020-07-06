@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProgramiranjeProizvodnje.Forme"
         mc:Ignorable="d"
-        Title="Radnik" Height="450" Width="800">
+        Title="Radnik" Height="450" Width="800" Icon="../Resources/process.png">
     <Grid>
         <Label Content="Ime:" HorizontalAlignment="Left" Margin="97,59,0,0" VerticalAlignment="Top"/>
         <TextBox Name="txtImeRadnika" HorizontalAlignment="Left" Height="23" Margin="157,63,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
@@ -23,8 +23,8 @@
         <ComboBox Name="cbxRadnoMesto" HorizontalAlignment="Left" Margin="583,109,0,0" VerticalAlignment="Top" Width="120" SelectedValuePath="RadnoMestoID" DisplayMemberPath="Radno mesto"/>
         <Label Content="Pogon:" HorizontalAlignment="Left" Margin="469,152,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.601,0.536"/>
         <ComboBox Name="cbxPogon" HorizontalAlignment="Left" Margin="583,152,0,0" VerticalAlignment="Top" Width="120" SelectedValuePath="PogonID" DisplayMemberPath="Oznaka pogona"/>
-        <Button Name="btnSacuvaj" Content="Sacuvaj" HorizontalAlignment="Left" Margin="327,355,0,0" VerticalAlignment="Top" Width="75" Click="btnSacuvaj_Click" />
-        <Button Name="btnOtkazi" Content="Otkazi" HorizontalAlignment="Left" Margin="469,355,0,0" VerticalAlignment="Top" Width="75" Click="btnOtkazi_Click"/>
+        <Button Name="btnSacuvaj" Content="Sačuvaj" HorizontalAlignment="Left" Margin="327,355,0,0" VerticalAlignment="Top" Width="75" Click="btnSacuvaj_Click" />
+        <Button Name="btnOtkazi" Content="Otkaži" HorizontalAlignment="Left" Margin="469,355,0,0" VerticalAlignment="Top" Width="75" Click="btnOtkazi_Click"/>
         <Label Name="lblStatus" Content="Status:" HorizontalAlignment="Left" Margin="471,209,0,0" VerticalAlignment="Top"/>
         <CheckBox Name="chkStatus" Content="" HorizontalAlignment="Left" Margin="583,217,0,0" VerticalAlignment="Top"/>
 

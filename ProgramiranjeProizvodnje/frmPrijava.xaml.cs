@@ -83,6 +83,10 @@ namespace ProgramiranjeProizvodnje
                         MainWindow mainWindow2 = new MainWindow();
                         mainWindow2.Show();
                         mainWindow2.btnRadnik.Visibility = Visibility.Collapsed;
+                        mainWindow2.btnIzmeniRadnika.Visibility = Visibility.Collapsed;
+                        mainWindow2.btnObrisiRadnika.Visibility = Visibility.Collapsed;
+                        mainWindow2.btnDodajRadnika.Visibility = Visibility.Collapsed;
+
                         mainWindow2.rola.Text = "Zaposleni";
                         
                         this.Close();
